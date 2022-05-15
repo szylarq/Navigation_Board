@@ -4,20 +4,20 @@
 ### To do:
 ### User-related use scenarios
 - [ ] Other task
-    - [ ] Connect to the SQLite
+    - [ X ] Connect to the SQLite 
     - [ ] Make map a little bit trasparent by changing opacity
     - [ ] 
 - [ ] - Sign up
-    - [ ] - Sign up view with nickname, pass, email, date of birth
+    - [ ] - Sign up view with nickname, pass, email, date of birth (DIMA)
     - [ ] - name is already in use
     - [ ] - must select a new value containing between 6 and 15 characters or digits without spaces, and he can use hyphens or sub-dashes ((!@#\$%&\*()-+=)
     - [ ] - The email is in a valid format and the user is over 12 years old.
     - [ ] - The system registers the new user and notifies him
 - [ ] - Login
-    - [ ] - Login View
+    - [ ] - Login View (DIMA)
     - [ ] - Login logic
 - [ ] - Making a problem
-    - [ ] - Task View
+    - [ ] - Task View (DIMA)
     - [ ] - Generate random task
     - [ ] - Randomly sort answers 
     - [ ] - Varefication of answer 
@@ -25,48 +25,48 @@
     - [ ] - Show the list of problems
     - [ ] - Choose task from the list
 - [ ] - Modify profile
-    - [ ] - Modify profile view
+    - [ ] - Modify profile view (DIMA)
     - [ ] - Modify avatar 
     - [ ] - Modify password
     - [ ] - Modify nickname, email, date of birth
     - [ ] - Validation of provided data
 - [ ] - Show results
-    - [ ] - Results view
+    - [ ] - Results view (DIMA)
     - [ ] - Create user successes/mistakes logic
     - [ ] - Showing data in scructured way
     - [ ] - Sorting
     - [ ] - Filtering by scope of date(from/to)
 ### Chart-related use scearios
-- [ ] Chart view
+- [ ] Chart view (DIMA)
 - [ ] Choose the colour and width of the stroke
-    - [ ] View
+    - [ ] View (DIMA)
     - [ ] Logic
 - [ ] Zoom in/out 
-    - [ ] View
+    - [ ] View (DIMA)
     - [ ] Logic
 - [ ] Displays the mark point in the shape and colour previously set
-    - [ ] View
+    - [ ] View (DIMA)
     - [ ] Logic
 - [ ] Drawig an line (take preselected color and width)
-  - [ ] View
+  - [ ] View (DIMA)
   - [ ] Logic
 - [ ] Drawig an arc (take preselected color and width)
-    - [ ] View
+    - [ ] View (DIMA)
     - [ ] Logic
 - [ ] Adding text (take preselected color and width)
-    - [ ] View
+    - [ ] View (DIMA)
     - [ ] Logic
 - [ ] Changin the colour of a mark (dot, line, arc, text) (after selection change on preset color)
-    - [ ] View
+    - [ ] View (DIMA)
     - [ ] Logic 
 - [ ] Delete a mark
-    - [ ] View
+    - [ ] View (DIMA)
     - [ ] Logic
 - [ ] Clean the chart
-    - [ ] View
+    - [ ] View (DIMA)
     - [ ] Logic
 - [ ] Marking ends of a point on the chart
-    - [ ] View
+    - [ ] View (DIMA)
     - [ ] Show latitude ad longitude of mark (paints on the
 chart two orthogonal lines passing through the point and cutting perpendicularly the
 edges of the chart
