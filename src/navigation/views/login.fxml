@@ -1,26 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.LoginController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#onLoginButtonClicked" text="Log in" GridPane.rowIndex="1" />
-      <PasswordField fx:id="passwordField" GridPane.columnIndex="1" />
-      <TextField fx:id="usernameTextField" />
-   </children>
-</GridPane>
-
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="263.0" prefWidth="921.0" stylesheets="@../resources/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.LoginController">
+   <top>
+      <Label alignment="TOP_LEFT" prefHeight="45.0" prefWidth="931.0" style="-fx-text-fill: WHITE; -fx-background-color: DEEPSKYBLUE; -fx-font-size: 30; -fx-font-weight: BOLD;" text="Log In" BorderPane.alignment="TOP_LEFT">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Label>
+   </top>
+   <right>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="218.0" prefWidth="176.0" spacing="15.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="button_accept" mnemonicParsing="false" onAction="#handleOnActionButtonAccept" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: DEEPSKYBLUE; -fx-text-fill: WHITE; -fx-font-weight: BOLD;" text="Accept">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="button_cancel" mnemonicParsing="false" onAction="#handleOnActionButtonCancel" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: DEEPSKYBLUE; -fx-text-fill: WHITE; -fx-font-weight: BOLD;" text="Cancel">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </HBox>
+   </right>
+   <center>
+      <VBox prefHeight="218.0" prefWidth="609.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Username:" />
+            <HBox prefHeight="45.0" prefWidth="725.0" spacing="15.0">
+               <children>
+                  <TextField fx:id="username_field" prefHeight="29.0" prefWidth="336.0" />
+               </children>
+            </HBox>
+            <Label prefWidth="79.0" style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Password:" />
+            <HBox prefHeight="56.0" prefWidth="725.0" spacing="15.0">
+               <children>
+                  <PasswordField fx:id="pass_field" prefHeight="31.0" prefWidth="335.0" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </center>
+</BorderPane>

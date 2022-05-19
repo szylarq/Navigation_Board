@@ -19,25 +19,25 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox stylesheets="@../resources/estilos.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.ChartController">
+<VBox prefHeight="616.0" prefWidth="895.0" stylesheets="@../resources/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.NavigatorController">
    <children>
       <HBox alignment="CENTER_RIGHT" fillHeight="false" spacing="5.0" VBox.vgrow="NEVER">
          <children>
-            <MenuBar>
+            <MenuBar prefHeight="25.0" prefWidth="639.0">
               <menus>
-                <Menu mnemonicParsing="false" text="FIle">
+                <Menu mnemonicParsing="false" text="File">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                    <MenuItem mnemonicParsing="false" onAction="#cerrarAplicacion" text="Exit" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Remove" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleOnActionButtonProfile" text="Profile" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
+                    <MenuItem mnemonicParsing="false" onAction="#acercaDe" text="About" />
                   </items>
                 </Menu>
               </menus>
@@ -45,7 +45,7 @@
             <Region HBox.hgrow="ALWAYS" />
             <Label text="Zoom" />
             <Button mnemonicParsing="false" onAction="#zoomOut" text="-" />
-            <Slider fx:id="zoomSlider" HBox.hgrow="SOMETIMES" />
+            <Slider fx:id="zoom_slider" HBox.hgrow="SOMETIMES" />
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#zoomIn" text="+" />
          </children>
          <VBox.margin>
@@ -54,19 +54,19 @@
       </HBox>
       <SplitPane dividerPositions="0.4431438127090301" VBox.vgrow="ALWAYS">
          <items>
-            <ListView fx:id="mapListView" onMouseClicked="#listClicked" prefHeight="399.0" prefWidth="87.0" />
-            <ScrollPane fx:id="mapScrollPane" hbarPolicy="ALWAYS" onMouseMoved="#showPosition" pannable="true" prefHeight="398.0" prefWidth="358.0" vbarPolicy="ALWAYS">
+            <ListView fx:id="map_listview" onMouseClicked="#listClicked" prefHeight="399.0" prefWidth="87.0" />
+            <ScrollPane fx:id="map_scrollpane" hbarPolicy="ALWAYS" onMouseMoved="#muestraPosicion" pannable="true" prefHeight="398.0" prefWidth="358.0" vbarPolicy="ALWAYS">
                <content>
                   <Pane>
                      <children>
-                        <ImageView pickOnBounds="true">
+                        <ImageView fx:id="imgView" pickOnBounds="true">
                            <image>
                               <Image url="@../resources/upv.jpg" />
                            </image>
                         </ImageView>
-                        <MenuButton fx:id="mapPin" mnemonicParsing="false" prefHeight="60.0" prefWidth="48.0" visible="false">
+                        <MenuButton fx:id="map_pin" mnemonicParsing="false" prefHeight="60.0" prefWidth="48.0" visible="false">
                            <items>
-                              <MenuItem fx:id="pinInfo" mnemonicParsing="false" text="Action 1" />
+                              <MenuItem fx:id="pin_info" mnemonicParsing="false" text="Action 1" />
                            </items>
                            <styleClass>
                               <String fx:value="menu-button" />
@@ -81,7 +81,7 @@
       </SplitPane>
       <HBox alignment="CENTER_RIGHT">
          <children>
-            <Label fx:id="position" minHeight="-Infinity" minWidth="-Infinity" text="SceneX:     ScenY:     " wrapText="true" HBox.hgrow="ALWAYS" />
+            <Label fx:id="posicion" minHeight="-Infinity" minWidth="-Infinity" text="SceneX:     ScenY:     " wrapText="true" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets bottom="12.0" right="12.0" top="6.0" />
@@ -89,4 +89,3 @@
       </HBox>
    </children>
 </VBox>
-

@@ -172,3 +172,16 @@ S17.642,20.762,13.558,20.762z";
 .contrast .split-pane > .split-pane-divider {
     -fx-background-color: -app-color-lo;
 }
+
+.button{
+    -fx-background-color:deepskyblue;
+    -fx-text-fill:white;
+    -fx-font-weight:bold;
+       
+}
+
+.label{
+    -fx-text-fill:deepskyblue;
+    -fx-font-size:18;
+    
+}
