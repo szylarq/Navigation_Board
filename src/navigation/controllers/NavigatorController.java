@@ -77,22 +77,22 @@ public class NavigatorController implements Initializable {
     @FXML
     private void handleOnActionButtonProfile(ActionEvent event) throws IOException {
         //Load UI objects
-        Parent root = FXMLLoader.load(Utils.getFXMLName(ProfileController.class));
+//        Parent root = FXMLLoader.load(Utils.getFXMLName(ProfileController.class));
 //        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("FXMLProfile.fxml"));
 //        Parent root = myLoader.load();
 //        
 //        ProfileController profileController = myLoader.<ProfileController>getController(); 
-
-        Scene scene = new Scene(root);
-        Stage profileStage = new Stage();
-        profileStage.setScene(scene);
-        profileStage.setTitle("User Profile");
+//
+//        Scene scene = new Scene(root);
+//        Stage profileStage = new Stage();
+//        profileStage.setScene(scene);
+//        profileStage.setTitle("User Profile");
 //        
 //        
 //        profileController.initProfileWindow(primaryStage, profileStage, user);
-            
-        profileStage.initModality(Modality.APPLICATION_MODAL);
-        profileStage.showAndWait();    
+//            
+//        profileStage.initModality(Modality.APPLICATION_MODAL);
+//        profileStage.showAndWait();    
     }
 
     @FXML
@@ -199,9 +199,9 @@ public class NavigatorController implements Initializable {
 
     @FXML
     private void acercaDe(ActionEvent event) {
-        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
-        mensaje.setTitle("Acerca de");
-        mensaje.setHeaderText("IPC - 2022");
-        mensaje.showAndWait();
+//        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+//        mensaje.setTitle("Acerca de");
+//        mensaje.setHeaderText("IPC - 2022");
+//        mensaje.showAndWait();
     }
 }

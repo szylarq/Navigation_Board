@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.ProblemsController">
+   <center>
+      <ListView fx:id="problemsListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#onExitClicked" text="Exit" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#onProfileClicked" text="Profile" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#onAboutClicked" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Button mnemonicParsing="false" onAction="#onLogOutClicked" text="Log out" />
+            <ImageView fx:id="profileImageView" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onProfileClicked" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+   </top>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#onOpenRandomClicked" text="Open random" />
+            <Button fx:id="openSelectedButton" mnemonicParsing="false" onAction="#onOpenSelectedClicked" text="Open selected" />
+         </children>
+      </VBox>
+   </right>
+</BorderPane>

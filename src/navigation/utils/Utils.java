@@ -10,8 +10,10 @@ import navigation.AppRoot;
 import navigation.controllers.LoginController;
 import navigation.controllers.MainController;
 import navigation.controllers.NavigatorController;
+import navigation.controllers.ProblemsController;
 import navigation.controllers.ProfileController;
 import navigation.controllers.SignUpController;
+import navigation.controllers.SingleProblemController;
  
 public class Utils {
         
@@ -25,7 +27,9 @@ public class Utils {
             LoginController.class, "login",
             NavigatorController.class, "navigator",
             ProfileController.class, "profile",
-            SignUpController.class, "signUp"
+            SignUpController.class, "signUp",
+            ProblemsController.class, "problems",
+            SingleProblemController.class, "singleProblem"
      );
     
     public static URL getFXMLName (Class<?> controllerClass) {
@@ -66,6 +70,10 @@ public class Utils {
     public static void hideErrorMessage(Label errorLabel, Node node) {
         errorLabel.visibleProperty().set(false);
         node.styleProperty().setValue("");
+    }
+    
+    public static void closeTheApp(){
+        System.exit(0);
     }
  }
 

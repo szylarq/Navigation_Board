@@ -74,8 +74,8 @@ public class LoginController implements Initializable {
             
             AppRoot.setCurrentUser(user);
             //Load UI objects
-            Parent root = FXMLLoader.load(Utils.getFXMLName(NavigatorController.class));
-            
+            Parent root = FXMLLoader.load(Utils.getFXMLName(ProblemsController.class));
+
             //Show win2
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);

@@ -50,12 +50,6 @@ public class SignUpController implements Initializable {
     private Scene primaryScene;
     private String primaryTitle;
 
-//    public void initSignUpWindow(Stage stage) {
-//        primaryStage = stage;
-//        primaryScene = primaryStage.getScene();
-//        primaryTitle = primaryStage.getTitle();
-//    }
-
     @FXML
     private void handleOnActionButtonCancel(ActionEvent event) {
         primaryStage.setScene(primaryScene);

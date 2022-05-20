@@ -13,7 +13,7 @@ import navigation.utils.Utils;
 
 public class AppRoot extends Application {
     
-    private static final String APP_NAME = "Navigation Board";
+    public static final String APP_NAME = "Navigation Board";
     
     private static User USER;
     private static Stage STAGE;
