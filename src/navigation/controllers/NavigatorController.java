@@ -1,6 +1,5 @@
 package navigation.controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -9,12 +8,9 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
@@ -23,13 +19,11 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.User;
 import navigation.AppRoot;
 import navigation.model.Poi;
-import navigation.utils.Utils;
 
 /**
  *
@@ -66,34 +60,6 @@ public class NavigatorController implements Initializable {
     private String primaryTitle;
 
     private User user;
-
-//    public void initNavigatorWindow(Stage stage, User user) {
-//        primaryStage = stage;
-//        primaryScene = primaryStage.getScene();
-//        primaryTitle = primaryStage.getTitle();
-//        this.user = user;
-//    }
-
-    @FXML
-    private void handleOnActionButtonProfile(ActionEvent event) throws IOException {
-        //Load UI objects
-//        Parent root = FXMLLoader.load(Utils.getFXMLName(ProfileController.class));
-//        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("FXMLProfile.fxml"));
-//        Parent root = myLoader.load();
-//        
-//        ProfileController profileController = myLoader.<ProfileController>getController(); 
-//
-//        Scene scene = new Scene(root);
-//        Stage profileStage = new Stage();
-//        profileStage.setScene(scene);
-//        profileStage.setTitle("User Profile");
-//        
-//        
-//        profileController.initProfileWindow(primaryStage, profileStage, user);
-//            
-//        profileStage.initModality(Modality.APPLICATION_MODAL);
-//        profileStage.showAndWait();    
-    }
 
     @FXML
     void zoomIn(ActionEvent event) {
@@ -173,8 +139,8 @@ public class NavigatorController implements Initializable {
         zoom_slider.setMin(0.5);
         zoom_slider.setMax(1.5);
         zoom_slider.setValue(1.0);
-        zoom_slider.valueProperty()
-                .addListener((o, oldVal, newVal) -> zoom((Double) newVal));
+        zoom_slider.valueProperty().addListener((o, oldVal, newVal) 
+                -> zoom((Double) newVal));
 
         //=========================================================================
         //Envuelva el contenido de scrollpane en un grupo para que 
@@ -192,18 +158,5 @@ public class NavigatorController implements Initializable {
         posicion.setText("sceneX: " + (int) event.getSceneX() + ", sceneY: " 
                 + (int) event.getSceneY() + "\n" + "         X: " 
                 + (int) event.getX() + ",          Y: " + (int) event.getY());
-    }
-
-    @FXML
-    private void cerrarAplicacion(ActionEvent event) {
-        ((Stage) zoom_slider.getScene().getWindow()).close();
-    }
-
-    @FXML
-    private void acercaDe(ActionEvent event) {
-//        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
-//        mensaje.setTitle("Acerca de");
-//        mensaje.setHeaderText("IPC - 2022");
-//        mensaje.showAndWait();
     }
 }
