@@ -63,7 +63,8 @@ public class LoginController implements Initializable {
             alert.setHeaderText("ERROR 404");
             alert.setContentText("Username not found in database");
 
-        } else if ((user = AppRoot.getDbDriver().loginUser(username.getValue(), password.getValue())) == null) {
+        } else if ((user = AppRoot.getDbDriver().loginUser(username.getValue(), 
+                password.getValue())) == null) {
             alert.setTitle("Error - Log in");
             alert.setHeaderText("ERROR");
             alert.setContentText("Username and password do not match");
@@ -78,7 +79,8 @@ public class LoginController implements Initializable {
             currentSession.setUser(user);
             
             //Load UI objects
-            Parent root = FXMLLoader.load(Utils.getFXMLName(ProblemsController.class));
+            Parent root = 
+                    FXMLLoader.load(Utils.getFXMLName(ProblemsController.class));
 
             //Show win2
             Scene scene = new Scene(root);

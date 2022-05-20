@@ -26,38 +26,20 @@ public class MainController implements Initializable {
     private void handleOnActionButtonLogin(ActionEvent event) throws IOException {
         //Load UI objects
         Parent root = FXMLLoader.load(Utils.getFXMLName(LoginController.class));
-//        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("FXMLLogin.fxml"));
-//        Parent root = myLoader.load();
-//        
-//        //Access to wind2 controller and init win2
-//        LoginController loginController = myLoader.<LoginController>getController();
-//        loginController.initLoginWindow(primaryStage);
-        
-        //Show win2
+
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Login");
-       // primaryStage.show();
-
     }
     
     @FXML
     private void handleOnActionButtonSignUp(ActionEvent event) throws IOException {
         //Load UI objects
         Parent root = FXMLLoader.load(Utils.getFXMLName(SignUpController.class));
-//        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("FXMLSignUp.fxml"));
-//        Parent root = myLoader.load();
-//        
-//        //Access to wind2 controller and init win2
-//        SignUpController signUpController = myLoader.<SignUpController>getController();
-//        signUpController.initSignUpWindow(primaryStage);
-        
-        //Show win2
+
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Sign Up");
-       // primaryStage.show();
-
     }
     
         @FXML

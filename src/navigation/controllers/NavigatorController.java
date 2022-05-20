@@ -173,7 +173,8 @@ public class NavigatorController implements Initializable {
         zoom_slider.setMin(0.5);
         zoom_slider.setMax(1.5);
         zoom_slider.setValue(1.0);
-        zoom_slider.valueProperty().addListener((o, oldVal, newVal) -> zoom((Double) newVal));
+        zoom_slider.valueProperty()
+                .addListener((o, oldVal, newVal) -> zoom((Double) newVal));
 
         //=========================================================================
         //Envuelva el contenido de scrollpane en un grupo para que 
@@ -188,8 +189,9 @@ public class NavigatorController implements Initializable {
 
     @FXML
     private void muestraPosicion(MouseEvent event) {
-        posicion.setText("sceneX: " + (int) event.getSceneX() + ", sceneY: " + (int) event.getSceneY() + "\n"
-                + "         X: " + (int) event.getX() + ",          Y: " + (int) event.getY());
+        posicion.setText("sceneX: " + (int) event.getSceneX() + ", sceneY: " 
+                + (int) event.getSceneY() + "\n" + "         X: " 
+                + (int) event.getX() + ",          Y: " + (int) event.getY());
     }
 
     @FXML

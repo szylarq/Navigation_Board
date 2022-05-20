@@ -47,11 +47,15 @@ public class ProfileController implements Initializable {
     
     private User user;
     
-    private StringProperty username, email, password1, password2, birthdate, avatarPath;
-    private BooleanProperty validEmail, validPassword, equalPasswords, validBirthDate, validUsername, validAvatar;
+    private StringProperty username, email, password1, password2, birthdate, 
+            avatarPath;
+    private BooleanProperty validEmail, validPassword, equalPasswords, 
+            validBirthDate, validUsername, validAvatar;
     
     @FXML
-    private Label emailerror_label, passworderror_label, repeatedpassworderror_label, birthdateerror_label, usernameerror_label, avatarerror_label, avatar_label;
+    private Label emailerror_label, passworderror_label, 
+            repeatedpassworderror_label, birthdateerror_label, 
+            usernameerror_label, avatarerror_label, avatar_label;
     
     private Stage primaryStage, currentStage;
     private Scene primaryScene;
@@ -72,7 +76,8 @@ public class ProfileController implements Initializable {
     
     private void setAvatar(File avatarFile) {
         
-        if(!(avatarFile.getAbsolutePath().endsWith(".png") || avatarFile.getAbsolutePath().endsWith(".jpg"))){
+        if(!(avatarFile.getAbsolutePath().endsWith(".png") 
+                || avatarFile.getAbsolutePath().endsWith(".jpg"))){
             Utils.manageError(avatarerror_label, avatar_label, validAvatar);
             return;
         }
@@ -98,7 +103,8 @@ public class ProfileController implements Initializable {
             user.setBirthdate(date_field.getValue());
             
             if(avatarPath.getValue()!=null) {
-                user.setAvatar(new Image(new FileInputStream(new File(avatarPath.getValue()))));  
+                user.setAvatar(new Image(new FileInputStream(
+                        new File(avatarPath.getValue()))));  
             }
         } catch (Exception ex) {
             Alert error = new Alert(Alert.AlertType.ERROR);
@@ -177,29 +183,36 @@ public class ProfileController implements Initializable {
         validAvatar = new SimpleBooleanProperty();
         validAvatar.setValue(Boolean.TRUE);
         
-        apply_button.disableProperty().bind(validPassword.not().or(validEmail.not()).or(equalPasswords.not()).or(validBirthDate.not()).or(validUsername.not()));
+        apply_button.disableProperty().bind(validPassword.not()
+                .or(validEmail.not()).or(equalPasswords.not())
+                .or(validBirthDate.not())
+                .or(validUsername.not()));
 
         //Check values when user leaves email field
-        email_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        email_field.focusedProperty()
+                .addListener((observable, oldValue, newValue) -> {
             if (!newValue) { //focus lost.
                 checkEmail();
             }
         });
 
         //Check values when user leaves pass field
-        pass_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        pass_field.focusedProperty()
+                .addListener((observable, oldValue, newValue) -> {
             if (!newValue) { //focus lost.
                 checkPassword();
             }
         });
         
-        repaeatPass_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        repaeatPass_field.focusedProperty()
+                .addListener((observable, oldValue, newValue) -> {
             if (!newValue) { //focus lost.
                 checkEquals();
             }
         });
         
-        date_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        date_field.focusedProperty()
+                .addListener((observable, oldValue, newValue) -> {
             if (!newValue) { //focus lost.
                 checkBirthDate();
             }
@@ -221,13 +234,15 @@ public class ProfileController implements Initializable {
     private void checkEquals() {
         if (pass_field.textProperty().getValueSafe().compareTo(
                 repaeatPass_field.textProperty().getValueSafe()) != 0) {
-            Utils.showErrorMessage(repeatedpassworderror_label, repaeatPass_field);
+            Utils.showErrorMessage(repeatedpassworderror_label, 
+                    repaeatPass_field);
             equalPasswords.setValue(Boolean.FALSE);
             pass_field.textProperty().setValue("");
             repaeatPass_field.textProperty().setValue("");
             pass_field.requestFocus();
         } else {
-            Utils.manageCorrect(repeatedpassworderror_label, repaeatPass_field, equalPasswords);
+            Utils.manageCorrect(repeatedpassworderror_label, repaeatPass_field, 
+                    equalPasswords);
         }
     }
     
@@ -255,7 +270,8 @@ public class ProfileController implements Initializable {
         {
             Utils.manageError(birthdateerror_label, date_field, validBirthDate);
         } else {
-            Utils.manageCorrect(birthdateerror_label, date_field, validBirthDate);
+            Utils.manageCorrect(birthdateerror_label, date_field, 
+                    validBirthDate);
         }
     } 
 }

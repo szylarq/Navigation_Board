@@ -1,5 +1,6 @@
 package navigation.utils;
  
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -7,8 +8,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import javafx.beans.property.BooleanProperty;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.Session;
 import navigation.AppRoot;
 import navigation.controllers.LoginController;
@@ -25,11 +32,13 @@ public class Utils {
         
     public static final String DEFAULT_AVATAR_NAME = "default.png"; 
     public static final String AVATARS_FOLDER_PATH = "src/navigation/resources/avatars";
-    public static final String DEFAULT_AVATAR_PATH = AVATARS_FOLDER_PATH + "/" + DEFAULT_AVATAR_NAME;
+    public static final String DEFAULT_AVATAR_PATH = AVATARS_FOLDER_PATH + "/" 
+            + DEFAULT_AVATAR_NAME;
         
     private static final String VIEWS_FOLDER_PATH = "views/";
     private static final String FXML_EXTENSION = ".fxml";
-    private static final Map<Class<?>, String> FXML_CONTROLLERS_MAP = Map.of(MainController.class, "main",
+    private static final Map<Class<?>, String> FXML_CONTROLLERS_MAP = 
+        Map.of(MainController.class, "main",
             LoginController.class, "login",
             NavigatorController.class, "navigator",
             ProfileController.class, "profile",
@@ -59,12 +68,14 @@ public class Utils {
         return date.isBefore(LocalDate.now());
     }
 
-    public static void manageError(Label errorLabel, Node node, BooleanProperty boolProp) {
+    public static void manageError(Label errorLabel, Node node, 
+            BooleanProperty boolProp) {
         boolProp.setValue(Boolean.FALSE);
         showErrorMessage(errorLabel, node);
     }
 
-    public static void manageCorrect(Label errorLabel, Node node, BooleanProperty boolProp) {
+    public static void manageCorrect(Label errorLabel, Node node, 
+            BooleanProperty boolProp) {
         boolProp.setValue(Boolean.TRUE);
         hideErrorMessage(errorLabel, node);
     }
@@ -96,7 +107,8 @@ public class Utils {
         }
     }
     
-    private static boolean isDateBetweenTwoDates(LocalDate firstDate, LocalDate secondDate, LocalDate dateToCheck){
+    private static boolean isDateBetweenTwoDates(LocalDate firstDate, 
+            LocalDate secondDate, LocalDate dateToCheck){
         if(firstDate == null && secondDate == null){
             return true;
         }
@@ -104,24 +116,60 @@ public class Utils {
         if(firstDate == null && secondDate != null){
 
             return dateToCheck.compareTo(secondDate) <= 0;
-        }
-        else if(firstDate != null && secondDate == null){
+        } else if(firstDate != null && secondDate == null){
 
             return dateToCheck.compareTo(firstDate) >= 0;
-        }
-        else {
+        } else {
 
-            return (dateToCheck.compareTo(firstDate) >= 0 && dateToCheck.compareTo(secondDate) <= 0);
+            return (dateToCheck.compareTo(firstDate) >= 0 
+                    && dateToCheck.compareTo(secondDate) <= 0);
         }
     }
     
-    public static List<Session> getSessionsFromTheRange(LocalDate firstDate, LocalDate secondDate){
+    public static List<Session> getSessionsFromTheRange(LocalDate firstDate, 
+            LocalDate secondDate){
         return getAllUserSessions().stream()
-                .filter(session -> isDateBetweenTwoDates(firstDate, secondDate, session.getLocalDate())).collect(Collectors.toList());
+                .filter(session -> isDateBetweenTwoDates(
+                        firstDate, secondDate, session.getLocalDate()))
+                .collect(Collectors.toList());
     }
     
     public static List<Session> getAllUserSessions() {
-        return AppRoot.getDbDriver().getUser(AppRoot.getCurrentSession().getUser().getNickName()).getSessions();
+        return AppRoot.getDbDriver().getUser(AppRoot.getCurrentSession()
+                .getUser().getNickName()).getSessions();
+    }
+    
+    public static void logOut() throws IOException{
+        Utils.saveCurrentSession();
+        
+        Parent root = FXMLLoader.load(Utils.getFXMLName(MainController.class));
+        
+        AppRoot.getCurrentSession().setUser(null);
+        
+        Scene scene = new Scene(root);
+        Stage stage = AppRoot.getMainStage();
+        stage.setTitle(AppRoot.APP_NAME);
+        stage.setScene(scene);
+    }
+    
+    public static void shoeAbout(){
+        Alert message = new Alert(Alert.AlertType.INFORMATION);
+        message.setTitle("About");
+        message.setHeaderText("IPC - 2022");
+        message.showAndWait();
+    }
+    
+    public static void showUserProfile() throws IOException{
+        Parent root = 
+                FXMLLoader.load(Utils.getFXMLName(ProfileController.class)); 
+
+        Scene scene = new Scene(root);
+        Stage profileStage = new Stage();
+        profileStage.setScene(scene);
+        profileStage.setTitle("User Profile");
+            
+        profileStage.initModality(Modality.APPLICATION_MODAL);
+        profileStage.showAndWait();
     }
  }
 

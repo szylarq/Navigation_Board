@@ -38,13 +38,16 @@ public class SignUpController implements Initializable {
     private DatePicker date_field;
 
     @FXML
-    private Label emailerror_label, passworderror_label, repeatedpassworderror_label, birthdateerror_label, usernameerror_label, avatarerror_label, avatar_label;
+    private Label emailerror_label, passworderror_label, 
+            repeatedpassworderror_label, birthdateerror_label, 
+            usernameerror_label, avatarerror_label, avatar_label;
 
     @FXML
     private Button accept_button, cancel_button;
 
     private StringProperty username, email, password, birthdate, avatarPath;
-    private BooleanProperty validEmail, validPassword, equalPasswords, validBirthDate, validUsername, validAvatar;
+    private BooleanProperty validEmail, validPassword, equalPasswords, 
+            validBirthDate, validUsername, validAvatar;
 
     private Stage primaryStage;
     private Scene primaryScene;
@@ -59,8 +62,11 @@ public class SignUpController implements Initializable {
     @FXML
     private void handleOnActionButtonAccept(ActionEvent event) {
         try {
-            AppRoot.getDbDriver().registerUser(username.getValue(), email.getValue(), password.getValue(),
-                    new Image(new FileInputStream(new File(avatarPath.getValue()))), date_field.getValue());
+            AppRoot.getDbDriver().registerUser(username.getValue(), 
+                    email.getValue(), password.getValue(),
+                    new Image(new FileInputStream(new File(
+                            avatarPath.getValue()))), 
+                    date_field.getValue());
 
         } catch (Exception ex) {
             Alert error = new Alert(Alert.AlertType.ERROR);
@@ -70,7 +76,8 @@ public class SignUpController implements Initializable {
         if (AppRoot.getDbDriver().exitsNickName(username.getValue())) {
             Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
             confirmation.setTitle("User Registered");
-            confirmation.setContentText(" User " + username.getValue() + " registered succesfully!");
+            confirmation.setContentText(" User " + username.getValue() 
+                    + " registered succesfully!");
 
             primaryStage.setScene(primaryScene);
             primaryStage.setTitle(primaryTitle);
@@ -93,7 +100,8 @@ public class SignUpController implements Initializable {
 
     private void setAvatar(File avatarFile) {
         
-        if(!(avatarFile.getAbsolutePath().endsWith(".png") || avatarFile.getAbsolutePath().endsWith(".jpg"))){
+        if(!(avatarFile.getAbsolutePath().endsWith(".png") || 
+                avatarFile.getAbsolutePath().endsWith(".jpg"))){
             Utils.manageError(avatarerror_label, avatar_label, validAvatar);
             return;
         }
@@ -150,35 +158,44 @@ public class SignUpController implements Initializable {
         validAvatar = new SimpleBooleanProperty();
         validAvatar.setValue(Boolean.FALSE);
 
-        accept_button.disableProperty().bind(validPassword.not().or(validEmail.not()).or(equalPasswords.not()).or(validBirthDate.not()).or(validUsername.not()));
+        accept_button.disableProperty().bind(validPassword.not()
+                .or(validEmail.not())
+                .or(equalPasswords.not())
+                .or(validBirthDate.not())
+                .or(validUsername.not()));
 
         //Check values when user leaves email field
-        email_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        email_field.focusedProperty()
+                .addListener((observable, oldValue, newValue) -> {
             if (!newValue) { //focus lost.
                 checkEmail();
             }
         });
 
         //Check values when user leaves pass field
-        pass_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        pass_field.focusedProperty()
+                .addListener((observable, oldValue, newValue) -> {
             if (!newValue) { //focus lost.
                 checkPassword();
             }
         });
 
-        repaeatPass_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        repaeatPass_field.focusedProperty()
+                .addListener((observable, oldValue, newValue) -> {
             if (!newValue) { //focus lost.
                 checkEquals();
             }
         });
 
-        date_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        date_field.focusedProperty()
+                .addListener((observable, oldValue, newValue) -> {
             if (!newValue) { //focus lost.
                 checkBirthDate();
             }
         });
 
-        username_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        username_field.focusedProperty()
+                .addListener((observable, oldValue, newValue) -> {
             if (!newValue) { //focus lost.
                 checkUsername();
             }
@@ -191,13 +208,15 @@ public class SignUpController implements Initializable {
     private void checkEquals() {
         if (pass_field.textProperty().getValueSafe().compareTo(
                 repaeatPass_field.textProperty().getValueSafe()) != 0) {
-            Utils.showErrorMessage(repeatedpassworderror_label, repaeatPass_field);
+            Utils.showErrorMessage(repeatedpassworderror_label, 
+                    repaeatPass_field);
             equalPasswords.setValue(Boolean.FALSE);
             pass_field.textProperty().setValue("");
             repaeatPass_field.textProperty().setValue("");
             pass_field.requestFocus();
         } else {
-            Utils.manageCorrect(repeatedpassworderror_label, repaeatPass_field, equalPasswords);
+            Utils.manageCorrect(repeatedpassworderror_label, repaeatPass_field, 
+                    equalPasswords);
         }
     }
 
@@ -233,9 +252,11 @@ public class SignUpController implements Initializable {
 
         if (!User.checkNickName(username.getValueSafe())) //Incorrect email
         {
-            Utils.manageError(usernameerror_label, username_field, validUsername);
+            Utils.manageError(usernameerror_label, username_field, 
+                    validUsername);
         } else {
-            Utils.manageCorrect(usernameerror_label, username_field, validUsername);
+            Utils.manageCorrect(usernameerror_label, username_field, 
+                    validUsername);
         }
     }
 }
