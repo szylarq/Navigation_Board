@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.User;
 import navigation.AppRoot;
+import navigation.model.CurrentSession;
 import navigation.utils.Utils;
 
 /**
@@ -72,7 +73,10 @@ public class LoginController implements Initializable {
             alert.setHeaderText("SUCCESS!");
             alert.setContentText("User " + username.getValue() + " is logged in.");
             
-            AppRoot.setCurrentUser(user);
+            AppRoot.setCurrentSession(new CurrentSession());
+            CurrentSession currentSession = AppRoot.getCurrentSession();
+            currentSession.setUser(user);
+            
             //Load UI objects
             Parent root = FXMLLoader.load(Utils.getFXMLName(ProblemsController.class));
 

@@ -139,7 +139,7 @@ public class ProfileController implements Initializable {
         primaryScene = primaryStage.getScene();
         primaryTitle = primaryStage.getTitle();
         
-        user = AppRoot.getCurrentUser();
+        user = AppRoot.getCurrentSession().getUser();
         
         username = new SimpleStringProperty();
         username.bind(username_field.textProperty());

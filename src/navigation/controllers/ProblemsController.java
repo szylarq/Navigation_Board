@@ -65,9 +65,11 @@ public class ProblemsController implements Initializable {
 
     @FXML
     private void onLogOutClicked(ActionEvent event) throws IOException{
+        Utils.saveCurrentSession();
+        
         Parent root = FXMLLoader.load(Utils.getFXMLName(MainController.class));
         
-        AppRoot.setCurrentUser(null);
+        AppRoot.getCurrentSession().setUser(null);
         
         Scene scene = new Scene(root);
         Stage stage = AppRoot.getMainStage();

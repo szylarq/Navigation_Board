@@ -26,6 +26,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Answer;
 import navigation.AppRoot;
+import navigation.model.CurrentSession;
 import navigation.model.ObservableProblem;
 import navigation.utils.Utils;
 
@@ -145,9 +146,11 @@ public class SingleProblemController implements Initializable {
 
     @FXML
     private void onLogOutClicked(ActionEvent event) throws IOException{
+        Utils.saveCurrentSession();
+        
         Parent root = FXMLLoader.load(Utils.getFXMLName(MainController.class));
         
-        AppRoot.setCurrentUser(null);
+        AppRoot.getCurrentSession().setUser(null);
         
         Scene scene = new Scene(root);
         Stage stage = AppRoot.getMainStage();
@@ -176,6 +179,12 @@ public class SingleProblemController implements Initializable {
         
         submitButton.setDisable(true);
         cancelFinishButton.setText("Finish");
+        
+        if(correct){
+            AppRoot.getCurrentSession().incrementHits();
+        } else {
+            AppRoot.getCurrentSession().incrementFaults();
+        }
     }
 
     @FXML

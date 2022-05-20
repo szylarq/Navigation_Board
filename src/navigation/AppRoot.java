@@ -7,23 +7,25 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import static javafx.application.Application.launch;
 import model.Navegacion;
-import model.User;
 import navigation.controllers.MainController;
+import navigation.model.CurrentSession;
 import navigation.utils.Utils;
 
 public class AppRoot extends Application {
     
     public static final String APP_NAME = "Navigation Board";
     
-    private static User USER;
-    private static Stage STAGE;
+    private static CurrentSession currentSession;
+    private static Stage stage;
     
     private static Navegacion dbDriver;
+    
+    
     
     @Override
     public void start(Stage stage) throws Exception {
         dbDriver = Navegacion.getSingletonNavegacion();
-        STAGE = stage;
+        AppRoot.stage = stage;
 
         Parent root = FXMLLoader.load(Utils.getFXMLName(MainController.class));
         Scene scene = new Scene(root);
@@ -37,18 +39,18 @@ public class AppRoot extends Application {
     }
    
     public static Stage getMainStage(){
-        return STAGE;
+        return stage;
     }
     
     public static Navegacion getDbDriver() {
         return dbDriver;
     }
-    
-    public static User getCurrentUser() {
-        return USER;
+
+    public static CurrentSession getCurrentSession() {
+        return currentSession;
     }
-    
-    public static void setCurrentUser(User user) {
-        USER = user;
+
+    public static void setCurrentSession(CurrentSession currentSession) {
+        AppRoot.currentSession = currentSession;
     }
 }

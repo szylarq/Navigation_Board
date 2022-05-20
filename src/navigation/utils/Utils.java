@@ -2,10 +2,12 @@ package navigation.utils;
  
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Map;
 import javafx.beans.property.BooleanProperty;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import model.Session;
 import navigation.AppRoot;
 import navigation.controllers.LoginController;
 import navigation.controllers.MainController;
@@ -14,6 +16,7 @@ import navigation.controllers.ProblemsController;
 import navigation.controllers.ProfileController;
 import navigation.controllers.SignUpController;
 import navigation.controllers.SingleProblemController;
+import navigation.model.CurrentSession;
  
 public class Utils {
         
@@ -73,7 +76,20 @@ public class Utils {
     }
     
     public static void closeTheApp(){
+        saveCurrentSession();
         System.exit(0);
+    }
+    
+    public static void saveCurrentSession(){
+        try {
+            CurrentSession currentSession = AppRoot.getCurrentSession();
+            AppRoot.getDbDriver().getUser(currentSession.getUser().getNickName())
+                    .addSession(new Session(LocalDateTime.now(),
+                                            currentSession.getHits(),
+                                            currentSession.getFaults()));
+        } catch (Exception e) {
+            System.out.println("Couldn't save session info");
+        }
     }
  }
 

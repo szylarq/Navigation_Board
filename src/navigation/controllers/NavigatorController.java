@@ -165,7 +165,7 @@ public class NavigatorController implements Initializable {
         primaryScene = primaryStage.getScene();
         primaryTitle = primaryStage.getTitle();
         
-        user = AppRoot.getCurrentUser();
+        user = AppRoot.getCurrentSession().getUser();
         
         initData();
         //==========================================================
