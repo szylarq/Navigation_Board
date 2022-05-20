@@ -4,38 +4,38 @@
 ### To do:
 ### User-related use scenarios
 - [ ] Other task
-    - [ X ] Connect to the SQLite 
+    - [X] Connect to the SQLite 
     - [ ] Make map a little bit trasparent by changing opacity
     - [ ] 
-- [ ] - Sign up
-    - [ ] - Sign up view with nickname, pass, email, date of birth (DIMA)
-    - [ ] - name is already in use
-    - [ ] - must select a new value containing between 6 and 15 characters or digits without spaces, and he can use hyphens or sub-dashes ((!@#\$%&\*()-+=)
-    - [ ] - The email is in a valid format and the user is over 12 years old.
-    - [ ] - The system registers the new user and notifies him
-- [ ] - Login
-    - [ ] - Login View (DIMA)
-    - [ ] - Login logic
+- [X] - Sign up
+    - [X] - Sign up view with nickname, pass, email, date of birth (DIMA)
+    - [X] - name is already in use
+    - [X] - must select a new value containing between 6 and 15 characters or digits without spaces, and he can use hyphens or sub-dashes ((!@#\$%&\*()-+=)
+    - [X] - The email is in a valid format and the user is over 12 years old.
+    - [X] - The system registers the new user and notifies him
+- [X] - Login
+    - [X] - Login View (DIMA)
+    - [X] - Login logic
 - [ ] - Making a problem
     - [ ] - Task View (DIMA)
-    - [ ] - Generate random task
-    - [ ] - Randomly sort answers 
-    - [ ] - Varefication of answer 
-    - [ ] - Save the answer
-    - [ ] - Show the list of problems
-    - [ ] - Choose task from the list
-- [ ] - Modify profile
+    - [X] - Generate random task
+    - [X] - Randomly sort answers 
+    - [X] - Varefication of answer 
+    - [X] - Save the answer
+    - [X] - Show the list of problems
+    - [X] - Choose task from the list
+- [X] - Modify profile
     - [ ] - Modify profile view (DIMA)
-    - [ ] - Modify avatar 
-    - [ ] - Modify password
-    - [ ] - Modify nickname, email, date of birth
-    - [ ] - Validation of provided data
-- [ ] - Show results
+    - [X] - Modify avatar 
+    - [X] - Modify password
+    - [X] - Modify nickname, email, date of birth
+    - [X] - Validation of provided data
+- [X] - Show results (Progress)
     - [ ] - Results view (DIMA)
-    - [ ] - Create user successes/mistakes logic
+    - [X] - Create user successes/mistakes logic
     - [ ] - Showing data in scructured way
-    - [ ] - Sorting
-    - [ ] - Filtering by scope of date(from/to)
+    - [X] - Sorting
+    - [X] - Filtering by scope of date(from/to)
 ### Chart-related use scearios
 - [ ] Chart view (DIMA)
 - [ ] Choose the colour and width of the stroke
