@@ -3,7 +3,9 @@ package navigation.utils;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import javafx.beans.property.BooleanProperty;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -14,6 +16,7 @@ import navigation.controllers.MainController;
 import navigation.controllers.NavigatorController;
 import navigation.controllers.ProblemsController;
 import navigation.controllers.ProfileController;
+import navigation.controllers.ProgressController;
 import navigation.controllers.SignUpController;
 import navigation.controllers.SingleProblemController;
 import navigation.model.CurrentSession;
@@ -32,7 +35,8 @@ public class Utils {
             ProfileController.class, "profile",
             SignUpController.class, "signUp",
             ProblemsController.class, "problems",
-            SingleProblemController.class, "singleProblem"
+            SingleProblemController.class, "singleProblem",
+            ProgressController.class, "progress"
      );
     
     public static URL getFXMLName (Class<?> controllerClass) {
@@ -90,6 +94,34 @@ public class Utils {
         } catch (Exception e) {
             System.out.println("Couldn't save session info");
         }
+    }
+    
+    private static boolean isDateBetweenTwoDates(LocalDate firstDate, LocalDate secondDate, LocalDate dateToCheck){
+        if(firstDate == null && secondDate == null){
+            return true;
+        }
+        
+        if(firstDate == null && secondDate != null){
+
+            return dateToCheck.compareTo(secondDate) <= 0;
+        }
+        else if(firstDate != null && secondDate == null){
+
+            return dateToCheck.compareTo(firstDate) >= 0;
+        }
+        else {
+
+            return (dateToCheck.compareTo(firstDate) >= 0 && dateToCheck.compareTo(secondDate) <= 0);
+        }
+    }
+    
+    public static List<Session> getSessionsFromTheRange(LocalDate firstDate, LocalDate secondDate){
+        return getAllUserSessions().stream()
+                .filter(session -> isDateBetweenTwoDates(firstDate, secondDate, session.getLocalDate())).collect(Collectors.toList());
+    }
+    
+    public static List<Session> getAllUserSessions() {
+        return AppRoot.getDbDriver().getUser(AppRoot.getCurrentSession().getUser().getNickName()).getSessions();
     }
  }
 

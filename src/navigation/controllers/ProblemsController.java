@@ -125,4 +125,14 @@ public class ProblemsController implements Initializable {
         stage.setTitle("Selected Problem");
         stage.setScene(scene);
     }
+
+    @FXML
+    private void showProgress(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(Utils.getFXMLName(ProgressController.class));
+  
+        Scene scene = new Scene(root);
+        Stage stage = AppRoot.getMainStage();
+        stage.setTitle(AppRoot.APP_NAME);
+        stage.setScene(scene);
+    }
 }

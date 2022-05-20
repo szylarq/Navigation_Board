@@ -36,6 +36,7 @@
                 </Menu>
               </menus>
             </MenuBar>
+            <Button mnemonicParsing="false" onAction="#showProgress" text="See your progress" />
             <Button mnemonicParsing="false" onAction="#onLogOutClicked" text="Log out" />
             <ImageView fx:id="profileImageView" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onProfileClicked" pickOnBounds="true" preserveRatio="true" />
          </children>
