@@ -53,8 +53,8 @@
             </HBox>
             <GridPane>
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.4000244140625" minWidth="10.0" prefWidth="43.199981689453125" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="557.6000183105468" minWidth="10.0" prefWidth="557.6000183105468" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="594.2000305175782" minWidth="10.0" prefWidth="528.8" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="557.6000183105468" minWidth="5.399969482421852" prefWidth="71.20000000000005" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -63,7 +63,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="ans1Label" text="Answer1" GridPane.columnIndex="1" />
+                  <Label fx:id="ans1Label" prefHeight="18.0" prefWidth="46.0" text="Answer1" GridPane.columnIndex="1" />
                   <Label fx:id="ans2Label" text="Answer2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label fx:id="ans3Label" text="Answer3" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label fx:id="ans4Label" text="Answer4" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -74,7 +74,7 @@
                </children>
             </GridPane>
             <Button fx:id="submitButton" mnemonicParsing="false" onAction="#onSubmitClicked" text="Submit" />
-            <Button mnemonicParsing="false" onAction="#onCancelClicked" text="Cancel" />
+            <Button fx:id="cancelFinishButton" mnemonicParsing="false" onAction="#onCancelClicked" text="Cancel" />
          </children>
       </VBox>
    </center>

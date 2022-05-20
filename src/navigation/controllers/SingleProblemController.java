@@ -2,7 +2,13 @@ package navigation.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +19,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Answer;
 import navigation.AppRoot;
 import navigation.model.ObservableProblem;
 import navigation.utils.Utils;
@@ -49,9 +57,14 @@ public class SingleProblemController implements Initializable {
     @FXML
     private RadioButton ans4RadioButton;
     @FXML
-    private Button submitButton;
+    private Button submitButton, cancelFinishButton;
     
     private ObservableProblem problem;
+    private Answer correctAnswer;
+    
+    private ToggleGroup radioButtonsGroup;
+    
+    private Map<RadioButton, Answer> radioButtonsAnswersMap;
     
     private Stage primaryStage;
     private Scene primaryScene;
@@ -63,17 +76,45 @@ public class SingleProblemController implements Initializable {
         primaryScene = primaryStage.getScene();
         primaryTitle = primaryStage.getTitle();
         
-        ToggleGroup radioButtonsGroup = new ToggleGroup();
+        radioButtonsGroup = new ToggleGroup();
         
         ans1RadioButton.setToggleGroup(radioButtonsGroup);
         ans2RadioButton.setToggleGroup(radioButtonsGroup);
         ans3RadioButton.setToggleGroup(radioButtonsGroup);
         ans4RadioButton.setToggleGroup(radioButtonsGroup);
+        
+        submitButton.setDisable(true);
+        
+        radioButtonsGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
+            public void changed(ObservableValue<? extends Toggle> ov,                    
+                Toggle old_toggle, Toggle new_toggle) {
+                if (radioButtonsGroup.getSelectedToggle() != null) {
+                    submitButton.setDisable(false);
+                } else {
+                    submitButton.setDisable(true);
+                }               
+        }});
     }
 
     public void init(ObservableProblem problem){
         this.problem = problem;
         problemLabel.setText(problem.getId() + ". " + problem.getProblem().getText());
+                
+        List<Answer> answers = new ArrayList<>(problem.getProblem().getAnswers());
+        correctAnswer = answers.stream().filter(ans -> ans.getValidity() == true).findFirst().get();
+        
+        Collections.shuffle(answers);
+        
+        radioButtonsAnswersMap = Map.of(
+                ans1RadioButton, answers.get(0),
+                ans2RadioButton, answers.get(1),
+                ans3RadioButton, answers.get(2),
+                ans4RadioButton, answers.get(3)    
+        );
+        
+        for(RadioButton radioButton : radioButtonsAnswersMap.keySet()){
+            radioButton.setText(radioButton.getText() + " " + radioButtonsAnswersMap.get(radioButton).getText());
+        }
     }
 
     @FXML
@@ -128,7 +169,13 @@ public class SingleProblemController implements Initializable {
     }
 
     @FXML
-    private void onSubmitClicked(ActionEvent event) {
+    private void onSubmitClicked(ActionEvent event) { 
+        RadioButton selectedRadioButton = (RadioButton) radioButtonsGroup.getSelectedToggle();
+        
+        boolean correct = radioButtonsAnswersMap.get(selectedRadioButton).equals(correctAnswer);
+        
+        submitButton.setDisable(true);
+        cancelFinishButton.setText("Finish");
     }
 
     @FXML
