@@ -1,5 +1,6 @@
 package navigation.controllers;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +17,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.User;
 import navigation.AppRoot;
@@ -35,17 +40,26 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField pass_field;
 
-    @FXML
-    private Label passworderror_label, usernameerror_label;
-
-    @FXML
-    private Button accept_button, cancel_button;
 
     private StringProperty username, password;
 
     private Stage primaryStage;
     private Scene primaryScene;
     private String primaryTitle;
+    @FXML
+    private VBox mainMenuId;
+    @FXML
+    private VBox centerContainerId;
+    @FXML
+    private Button button_accept;
+    @FXML
+    private Button button_cancel;
+    @FXML
+    private Button getBackBtnId;
+    @FXML
+    private VBox formContainerId;
+    @FXML
+    private HBox selectionMenuId;
 
     @FXML
     private void handleOnActionButtonCancel(ActionEvent event) {
@@ -92,6 +106,13 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        try {
+            initFronendSetings();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        
         primaryStage = AppRoot.getMainStage();
         primaryScene = primaryStage.getScene();
         primaryTitle = primaryStage.getTitle();
@@ -104,5 +125,37 @@ public class LoginController implements Initializable {
         password.setValue("1234Ui!@");
         password.bind(pass_field.textProperty());
         pass_field.textProperty().setValue("1234Ui!@");
+    }
+    
+    void initFronendSetings() throws Exception {
+        FileInputStream getBack = new FileInputStream(Utils.GET_BACK_ICON_PATH);
+        Image getBackImage = new Image(getBack);
+        ImageView imageViewGetBack = new ImageView(getBackImage);
+
+        imageViewGetBack.setFitHeight(Utils.DEFAULT_MENU_HEIGHT);
+        imageViewGetBack.setFitWidth(Utils.DEFAULT_MENU_HEIGHT);
+
+        getBackBtnId.setText("");
+        getBackBtnId.setGraphic(imageViewGetBack);
+    }
+    
+    @FXML
+    private void onExitClicked(ActionEvent event) {
+        Utils.closeTheApp();
+    }
+
+    @FXML
+    private void onAboutClicked(ActionEvent event) {
+        Utils.shoeAbout();
+    }
+
+    @FXML
+    private void onContactClick(ActionEvent event) {
+        Utils.showContact();
+    }
+
+    @FXML
+    private void onHelpClick(ActionEvent event) {
+        Utils.showHelp();
     }
 }
