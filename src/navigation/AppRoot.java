@@ -30,6 +30,8 @@ public class AppRoot extends Application {
         Parent root = FXMLLoader.load(Utils.getFXMLName(MainController.class));
         Scene scene = new Scene(root);
         stage.setTitle(APP_NAME);
+        stage.setMinHeight(300);
+        stage.setMinWidth(500);
         stage.setScene(scene);
         stage.show();
     }

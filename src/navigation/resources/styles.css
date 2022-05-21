@@ -177,11 +177,17 @@ S17.642,20.762,13.558,20.762z";
     -fx-background-color:deepskyblue;
     -fx-text-fill:white;
     -fx-font-weight:bold;
-       
+    -fx-width: 140px;
 }
 
 .label{
     -fx-text-fill:deepskyblue;
     -fx-font-size:18;
-    
+}
+
+.main-label {
+    -fx-text-fill: white;
+    -fx-background-color:deepskyblue;
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
 }

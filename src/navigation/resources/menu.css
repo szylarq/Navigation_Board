@@ -1,0 +1,21 @@
+.menu-button{
+    /*-fx-background-color:deepskyblue;*/
+    /*-fx-text-fill:white;*/
+    /*-fx-font-weight:bold;*/
+    -fx-padding: 0;
+    -fx-top: 0;
+    -fx-content: "";
+}
+
+/*.menu-button:focused {
+    -fx-border-color: transparent, black;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 2);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.menu-button:pressed {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}*/

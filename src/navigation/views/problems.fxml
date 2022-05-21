@@ -1,53 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.ProblemsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400" prefWidth="${screen.visualBounds.width}" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.ProblemsController">
    <center>
-      <ListView fx:id="problemsListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </center>
-   <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="centerContainerId" prefHeight="${screen.visualBounds.height}" prefWidth="${screen.visualBounds.width}" BorderPane.alignment="CENTER">
          <children>
-            <MenuBar>
-              <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                    <MenuItem mnemonicParsing="false" onAction="#onExitClicked" text="Exit" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" onAction="#onProfileClicked" text="Profile" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" onAction="#onAboutClicked" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-            <Button mnemonicParsing="false" onAction="#showProgress" text="See your progress" />
-            <Button mnemonicParsing="false" onAction="#onLogOutClicked" text="Log out" />
-            <ImageView fx:id="profileImageView" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onProfileClicked" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </HBox>
-   </top>
-   <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onAction="#onOpenRandomClicked" text="Open random" />
-            <Button fx:id="openSelectedButton" mnemonicParsing="false" onAction="#onOpenSelectedClicked" text="Open selected" />
+            <ListView fx:id="problemsListView" prefHeight="${centerContainerId.height*0.9}" prefWidth="${screen.visualBounds.width}" />
+            <HBox fx:id="selectionMenuId" alignment="CENTER" prefHeight="${centerContainerId.height*0.1}" prefWidth="${screen.visualBounds.width}">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onOpenRandomClicked" prefHeight="${selectionMenuId.height * 0.6}" prefWidth="140.0" stylesheets="@../resources/styles.css" text="Select Random">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="openSelectedButton" mnemonicParsing="false" onAction="#onOpenSelectedClicked" prefHeight="${selectionMenuId.height * 0.6}" prefWidth="140.0" stylesheets="@../resources/styles.css" text="Open Selected" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
          </children>
       </VBox>
-   </right>
+   </center>
+   <top>
+      <VBox fx:id="mainMenuId" prefWidth="${screen.visualBounds.width}" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="${screen.visualBounds.width}" style="-fx-background-color: #dee1e1;">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="getBackBtnId" maxHeight="30.0" maxWidth="25.0" mnemonicParsing="false" onAction="#onLogOutClicked" prefHeight="30.0" prefWidth="24.0" style="-fx-background-color: transparent; -fx-cursor: pointer; -fx-cursor: hand;" text="Back" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <MenuButton maxHeight="30.0" minWidth="69.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="69.0" style="-fx-cursor: hand; -fx-border-color: transparent; -fx-border-width: 0;" text="File">
+                          <items>
+                          <MenuItem mnemonicParsing="false" onAction="#onAboutClicked" text="About" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                          <MenuItem mnemonicParsing="false" onAction="#onExitClicked" text="Exit" />
+                          </items>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </MenuButton>
+                     </children>
+                  </HBox>
+                  <Separator fx:id="menuSeparotorId" opacity="0.0" prefWidth="${mainMenuId.width*0.8}" />
+                  <HBox alignment="BASELINE_RIGHT" layoutX="175" prefHeight="25.0" prefWidth="218.0" translateX="1">
+                     <children>
+                        <Button maxHeight="30.0" minWidth="90.0" mnemonicParsing="false" onAction="#showProgress" prefHeight="30.0" prefWidth="70.0" style="-fx-font-weight: bold; -fx-background-color: transparent; -fx-text-fill: deepskyblue; -fx-cursor: hand;" text="Results">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="chartBtnId" alignment="CENTER" maxHeight="30.0" minWidth="90.0" mnemonicParsing="false" onAction="#onShowNavigationMapClicked" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: deepskyblue; -fx-text-fill: white; -fx-cursor: hand; -fx-font-weight: bold;" stylesheets="@../resources/menu.css" text="Chart " textAlignment="CENTER" />
+                        <MenuButton fx:id="profileMenuBtnId" alignment="CENTER" contentDisplay="RIGHT" maxHeight="30.0" maxWidth="40.0" minWidth="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Profile" textAlignment="CENTER" wrapText="true">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#onProfileClicked" text="Profile" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                            <MenuItem mnemonicParsing="false" onAction="#onLogOutClicked" text="Log out" />
+                          </items>
+                           <HBox.margin>
+                              <Insets left="5.0" right="10.0" />
+                           </HBox.margin>
+                        </MenuButton>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="30.0" opacity="0.71" prefHeight="30.0" prefWidth="${screen.visualBounds.width}" styleClass="main-label" stylesheets="@../resources/styles.css">
+               <children>
+                  <Label alignment="CENTER" maxHeight="52.0" prefHeight="47.0" styleClass="main-label" stylesheets="@../resources/styles.css" text="Choose task" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" maxHeight="25.0" prefHeight="25.0" prefWidth="${screen.visualBounds.width}" style="-fx-background-color: #dee1e1;" BorderPane.alignment="CENTER_RIGHT">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="${screen.visualBounds.width}">
+               <children>
+                  <Button minWidth="60.0" mnemonicParsing="false" onAction="#onContactClick" prefHeight="25.0" prefWidth="50.0" style="-fx-cursor: hand; -fx-background-color: transparent;" text="Contact" textAlignment="CENTER" />
+                  <Button minWidth="45.0" mnemonicParsing="false" onAction="#onHelpClick" prefHeight="25.0" prefWidth="47.0" style="-fx-cursor: hand; -fx-background-color: transparent;" text="Help" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
 </BorderPane>
