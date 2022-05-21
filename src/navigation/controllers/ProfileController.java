@@ -231,6 +231,26 @@ public class ProfileController implements Initializable {
         avatar_label.setGraphic(view);
     }
     
+    @FXML
+    private void onExitClicked(ActionEvent event) {
+        Utils.closeTheApp();
+    }
+
+    @FXML
+    private void onAboutClicked(ActionEvent event) {
+        Utils.shoeAbout();
+    }
+
+    @FXML
+    private void onContactClick(ActionEvent event) {
+        Utils.showContact();
+    }
+
+    @FXML
+    private void onHelpClick(ActionEvent event) {
+        Utils.showHelp();
+    }
+    
     private void checkEquals() {
         if (pass_field.textProperty().getValueSafe().compareTo(
                 repaeatPass_field.textProperty().getValueSafe()) != 0) {

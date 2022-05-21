@@ -10,87 +10,162 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="724.0" prefWidth="1058.0" stylesheets="@../resources/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.ProfileController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="500" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.ProfileController">
    <top>
-      <Label alignment="TOP_LEFT" prefHeight="45.0" prefWidth="1059.0" style="-fx-text-fill: WHITE; -fx-background-color: DEEPSKYBLUE; -fx-font-size: 30; -fx-font-weight: BOLD;" text="User Profile" BorderPane.alignment="CENTER">
-         <padding>
-            <Insets left="10.0" />
-         </padding>
-      </Label>
+      <VBox fx:id="mainMenuId" prefWidth="${screen.visualBounds.width}" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" maxHeight="30.0" opacity="0.71" prefHeight="30.0" prefWidth="${screen.visualBounds.width}" styleClass="main-label" stylesheets="@../resources/styles.css">
+               <children>
+                  <Label alignment="CENTER" maxHeight="52.0" prefHeight="47.0" styleClass="main-label" stylesheets="@../resources/styles.css" text="User Profile" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
    </top>
-   <right>
-      <HBox alignment="BOTTOM_CENTER" prefHeight="669.0" prefWidth="198.0" spacing="15.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="apply_button" mnemonicParsing="false" onAction="#handleOnActionButtonApply" prefHeight="25.0" prefWidth="71.0" text="Apply ">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#handleOnActionButtonCancel" prefHeight="25.0" prefWidth="71.0" text="Cancel">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-         </children>
-         <padding>
-            <Insets bottom="10.0" />
-         </padding>
-      </HBox>
-   </right>
    <center>
-      <VBox prefHeight="489.0" prefWidth="745.0" spacing="15.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="centerContainerId" alignment="CENTER" prefHeight="${screen.visualBounds.height}" prefWidth="${screen.visualBounds.width}" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+            <VBox fx:id="formContainerId" alignment="CENTER" prefHeight="${centerContainerId.height*0.9}" prefWidth="${centerContainerId.width}" style="-fx-font-weight: bold;" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="avatar_label" alignment="CENTER" maxHeight="123.0" maxWidth="91.0" prefHeight="123.0" prefWidth="91.0" textAlignment="CENTER" />
-                  <Label fx:id="avatarerror_label" lineSpacing="15.0" prefHeight="71.0" prefWidth="299.0" text="Incorrect. Avatar must be a valid png or jpg file" textFill="#bf2020" visible="false" />
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label minWidth="100.0" prefHeight="27.0" prefWidth="102.0" style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Username:" translateX="-115.0" />
+                        <HBox alignment="CENTER" prefHeight="56.0" prefWidth="${formContainerId.width*0.6}">
+                           <children>
+                              <TextField fx:id="username_field" disable="true" prefHeight="29.0" prefWidth="336.0" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="usernameerror_label" alignment="CENTER" prefHeight="22.0" prefWidth="373.0" text="Incorrect.  A nickname isvalid if it is between 6 and 15&#10;characters long andcontains uppercase or lowercase&#10;letters or thehyphens '-' and '_' " textFill="#c92b2b" visible="false" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label minWidth="100.0" prefHeight="27.0" prefWidth="102.0" style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Email:" translateX="-115.0" />
+                        <HBox alignment="CENTER" prefHeight="56.0" prefWidth="${formContainerId.width*0.6}">
+                           <children>
+                              <TextField fx:id="email_field" prefHeight="29.0" prefWidth="336.0" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="emailerror_label" alignment="CENTER" prefHeight="23.0" prefWidth="373.0" text="Incorrect Email" textFill="#ae1818" visible="false" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label minWidth="100.0" prefHeight="27.0" prefWidth="102.0" style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Birthdate:" translateX="-115.0" />
+                        <HBox alignment="CENTER" prefHeight="56.0" prefWidth="${formContainerId.width*0.6}">
+                           <children>
+                              <DatePicker fx:id="date_field" prefHeight="31.0" prefWidth="335.0" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="birthdateerror_label" alignment="CENTER" prefHeight="22.0" prefWidth="373.0" text="Incorrect. Birth date cannot be blank or in the future." textFill="#ae1818" visible="false" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" minWidth="150.0" prefHeight="150.0" prefWidth="480.0">
+                     <children>
+                        <HBox alignment="CENTER" minWidth="50.0" prefHeight="0.0" prefWidth="480.0">
+                           <children>
+                              <Label fx:id="avatar_label" alignment="TOP_LEFT" maxHeight="80.0" maxWidth="75.0" minWidth="50.0" prefHeight="80.0" prefWidth="75.0" textAlignment="CENTER" />
+                              <Button alignment="CENTER" contentDisplay="RIGHT" minWidth="100.0" mnemonicParsing="false" onAction="#handleOnActionButtonSelectAvatar" prefHeight="56.0" prefWidth="${formContainerId.width*0.15}" stylesheets="@../resources/styles.css" text="Select Avatar" textAlignment="RIGHT">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Label fx:id="avatarerror_label" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="276.0" text="Incorrect. Avatar must be a valid png or jpg file" textFill="#ae1818" visible="false" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label minWidth="100.0" prefHeight="27.0" prefWidth="102.0" style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Password:" translateX="-115.0" />
+                        <HBox alignment="CENTER" prefHeight="56.0" prefWidth="${formContainerId.width*0.6}">
+                           <children>
+                              <PasswordField fx:id="pass_field" prefHeight="31.0" prefWidth="335.0" />
+                           </children>
+                        </HBox>
+                        <Label alignment="CENTER" prefHeight="9.0" prefWidth="373.0" textFill="#ae1818" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label minWidth="150.0" prefHeight="27.0" prefWidth="102.0" style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Repeat Password:" translateX="-90.0" />
+                        <HBox alignment="CENTER" prefHeight="56.0" prefWidth="${formContainerId.width*0.6}">
+                           <children>
+                              <PasswordField fx:id="repaeatPass_field" prefHeight="31.0" prefWidth="335.0" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="repeatedpassworderror_label" alignment="CENTER" prefHeight="9.0" prefWidth="373.0" text="Incorrect. Passwords do not match." textFill="#ae1818" visible="false" />
+                        <Label fx:id="passworderror_label" alignment="TOP_CENTER" prefHeight="106.0" prefWidth="480.0" text="Incorrect password. A password is valid if: - it contains between 8 and 20 characters &#10;- contains at least one upper case letter - contains at least one lower case letter &#10;- contains at least one digit - contains a special character from the set: &#10; !@#$%&amp;*&amp;*()-+=&#10;- does not contain any blanks" textFill="#c92b2b" visible="false" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </VBox>
                </children>
-            </HBox>
-            <Button mnemonicParsing="false" onAction="#handleOnActionButtonSelectAvatar" prefHeight="25.0" prefWidth="103.0" style="-fx-font-size: 12;" stylesheets="@../resources/styles.css" text="Select Avatar">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Label prefHeight="54.0" prefWidth="84.0" style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Username:" />
-            <HBox prefHeight="76.0" prefWidth="840.0" spacing="15.0">
+               <padding>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+            <HBox fx:id="selectionMenuId" alignment="CENTER" prefHeight="${centerContainerId.height*0.1}" prefWidth="${centerContainerId.width}" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="username_field" disable="true" prefHeight="29.0" prefWidth="336.0" />
-                  <Label fx:id="usernameerror_label" alignment="TOP_LEFT" prefHeight="36.0" prefWidth="373.0" text="Incorrect.  A nickname isvalid if it is between 6 and 15&#10;characters long andcontains uppercase or lowercase&#10;letters or thehyphens '-' and '_' " textFill="#c92b2b" visible="false" />
+                  <Button fx:id="apply_button" alignment="CENTER" mnemonicParsing="false" onAction="#handleOnActionButtonApply" prefHeight="${selectionMenuId.height * 0.15}" prefWidth="140.0" style="-fx-font-size: 18;" stylesheets="@../resources/styles.css" text="Apply" textAlignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#handleOnActionButtonCancel" prefHeight="${selectionMenuId.height * 0.2}" prefWidth="140.0" style="-fx-font-size: 18;" stylesheets="@../resources/styles.css" text="Cancel">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
-            </HBox>
-            <Label prefWidth="79.0" style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Email:" />
-            <HBox prefHeight="76.0" prefWidth="862.0" spacing="15.0">
-               <children>
-                  <TextField fx:id="email_field" prefHeight="29.0" prefWidth="336.0" />
-                  <Label fx:id="emailerror_label" alignment="TOP_LEFT" prefHeight="67.0" prefWidth="373.0" text="Incorrect Email" textFill="#ae1818" visible="false" />
-               </children>
-            </HBox>
-            <Label style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Password:" />
-            <HBox prefHeight="76.0" prefWidth="862.0" spacing="15.0">
-               <children>
-                  <PasswordField fx:id="pass_field" prefHeight="29.0" prefWidth="336.0" />
-                  <Label fx:id="passworderror_label" alignment="TOP_LEFT" prefHeight="82.0" prefWidth="512.0" text="Incorrect password. A password is valid if: - it contains between 8 and 20 characters &#10;- contains at least one upper case letter - contains at least one lower case letter &#10;- contains at least one digit - contains a special character from the set: !@#$%&amp;*&amp;*()-+=&#10;- does not contain any blanks" textFill="#c92b2b" visible="false" />
-               </children>
-            </HBox>
-            <Label prefHeight="27.0" prefWidth="143.0" style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Repeat Password:" />
-            <HBox prefHeight="76.0" prefWidth="862.0" spacing="15.0">
-               <children>
-                  <PasswordField fx:id="repaeatPass_field" prefHeight="29.0" prefWidth="335.0" />
-                  <Label fx:id="repeatedpassworderror_label" alignment="TOP_LEFT" prefHeight="67.0" prefWidth="373.0" text="Incorrect. Passwords do not match." textFill="#ae1818" visible="false" />
-               </children>
-            </HBox>
-            <Label style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Birthdate:" />
-            <HBox prefHeight="81.0" prefWidth="862.0" spacing="15.0">
-               <children>
-                  <DatePicker fx:id="date_field" prefHeight="29.0" prefWidth="336.0" />
-                  <Label fx:id="birthdateerror_label" alignment="TOP_LEFT" prefHeight="67.0" prefWidth="373.0" text="Incorrect. Birth date cannot be blank or in the future." textFill="#ae1818" visible="false" />
-               </children>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
             </HBox>
          </children>
-         <padding>
-            <Insets left="10.0" right="10.0" top="10.0" />
-         </padding>
       </VBox>
    </center>
-   <padding>
-      <Insets bottom="10.0" />
-   </padding>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" maxHeight="25.0" prefHeight="25.0" prefWidth="${screen.visualBounds.width}" style="-fx-background-color: #dee1e1;" BorderPane.alignment="CENTER_RIGHT">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="${screen.visualBounds.width}">
+               <children>
+                  <Button minWidth="60.0" mnemonicParsing="false" onAction="#onContactClick" prefHeight="25.0" prefWidth="50.0" style="-fx-cursor: hand; -fx-background-color: transparent;" text="Contact" textAlignment="CENTER" />
+                  <Button minWidth="45.0" mnemonicParsing="false" onAction="#onHelpClick" prefHeight="25.0" prefWidth="47.0" style="-fx-cursor: hand; -fx-background-color: transparent;" text="Help" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
 </BorderPane>
