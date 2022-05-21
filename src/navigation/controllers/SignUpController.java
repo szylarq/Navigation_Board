@@ -41,9 +41,9 @@ public class SignUpController implements Initializable {
     private Label emailerror_label, passworderror_label, 
             repeatedpassworderror_label, birthdateerror_label, 
             usernameerror_label, avatarerror_label, avatar_label;
-
+    
     @FXML
-    private Button accept_button, cancel_button;
+    private Button accept_button, cancel_button, getBackBtnId;
 
     private StringProperty username, email, password, birthdate, avatarPath;
     private BooleanProperty validEmail, validPassword, equalPasswords, 
@@ -58,6 +58,8 @@ public class SignUpController implements Initializable {
         primaryStage.setScene(primaryScene);
         primaryStage.setTitle(primaryTitle);
     }
+   
+    
 
     @FXML
     private void handleOnActionButtonAccept(ActionEvent event) {
@@ -83,6 +85,39 @@ public class SignUpController implements Initializable {
             primaryStage.setTitle(primaryTitle);
             confirmation.showAndWait();
         }
+    }
+    
+    void initFronendSetings() throws Exception {
+        
+        FileInputStream getBack = new FileInputStream(Utils.GET_BACK_ICON_PATH);
+        Image getBackImage = new Image(getBack);
+        ImageView imageViewGetBack = new ImageView(getBackImage);
+
+        imageViewGetBack.setFitHeight(Utils.DEFAULT_MENU_HEIGHT);
+        imageViewGetBack.setFitWidth(Utils.DEFAULT_MENU_HEIGHT);
+
+        getBackBtnId.setText("");
+        getBackBtnId.setGraphic(imageViewGetBack);
+    }
+    
+    @FXML
+    private void onExitClicked(ActionEvent event) {
+        Utils.closeTheApp();
+    }
+
+    @FXML
+    private void onAboutClicked(ActionEvent event) {
+        Utils.shoeAbout();
+    }
+
+    @FXML
+    private void onContactClick(ActionEvent event) {
+        Utils.showContact();
+    }
+
+    @FXML
+    private void onHelpClick(ActionEvent event) {
+        Utils.showHelp();
     }
 
     @FXML
@@ -121,6 +156,11 @@ public class SignUpController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        try {
+            initFronendSetings();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         primaryStage = AppRoot.getMainStage();
         primaryScene = primaryStage.getScene();
         primaryTitle = primaryStage.getTitle();
