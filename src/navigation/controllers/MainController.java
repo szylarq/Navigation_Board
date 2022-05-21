@@ -9,6 +9,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Separator;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import navigation.AppRoot;
 import navigation.utils.Utils;
@@ -21,6 +24,15 @@ import navigation.utils.Utils;
 public class MainController implements Initializable {
     
     private Stage primaryStage;
+    @FXML
+    private VBox mainMenuId;
+    @FXML
+    private Separator menuSeparotorId;
+    @FXML
+    private VBox centerContainerId;
+    @FXML
+    private HBox selectionMenuId;
+    
     
     @FXML
     private void handleOnActionButtonLogin(ActionEvent event) throws IOException {
@@ -30,6 +42,26 @@ public class MainController implements Initializable {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Login");
+    }
+    
+    @FXML
+    private void onExitClicked(ActionEvent event) {
+        Utils.closeTheApp();
+    }
+
+    @FXML
+    private void onAboutClicked(ActionEvent event) {
+        Utils.shoeAbout();
+    }
+
+    @FXML
+    private void onContactClick(ActionEvent event) {
+        Utils.showContact();
+    }
+
+    @FXML
+    private void onHelpClick(ActionEvent event) {
+        Utils.showHelp();
     }
     
     @FXML

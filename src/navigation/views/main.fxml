@@ -4,24 +4,80 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="219.0" prefWidth="473.0" stylesheets="@../resources/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400" prefWidth="${screen.visualBounds.width}" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.MainController">
    <top>
-      <HBox BorderPane.alignment="TOP_LEFT">
+      <VBox fx:id="mainMenuId" prefWidth="${screen.visualBounds.width}" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="1103.0" styleClass="main-label" stylesheets="@../resources/styles.css" text="Welcome to UPV Navigator tool" wrapText="true" />
+            <HBox alignment="CENTER_LEFT" minHeight="21.0" prefHeight="30.0" prefWidth="428.0" style="-fx-background-color: #dee1e1;">
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxHeight="25.0" minHeight="30.0" prefHeight="30.0" prefWidth="200.0">
+                     <children>
+                        <MenuButton maxHeight="30.0" minWidth="69.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="69.0" style="-fx-cursor: hand; -fx-border-width: 0; -fx-border-color: transparent;" text="File">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#onAboutClicked" text="About" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" onAction="#onExitClicked" text="Exit" />
+                           </items>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </MenuButton>
+                     </children>
+                  </HBox>
+                  <Separator fx:id="menuSeparotorId" opacity="0.0" prefWidth="${mainMenuId.width*0.8}" />
+                  <HBox alignment="CENTER_RIGHT" layoutX="175" prefHeight="25.0" prefWidth="218.0" translateX="1">
+                     <children>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleOnActionButtonExit" prefHeight="45.0" prefWidth="71.0" style="-fx-background-color: red;" stylesheets="@../resources/styles.css" text="Exit">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets bottom="6.0" right="3.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="30.0" opacity="0.71" prefHeight="30.0" prefWidth="${screen.visualBounds.width}" styleClass="main-label" stylesheets="@../resources/styles.css">
+               <children>
+                  <Label alignment="CENTER" maxHeight="52.0" prefHeight="47.0" styleClass="main-label" stylesheets="@../resources/styles.css" text="Welcome to UPV Navigator tool" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
          </children>
-      </HBox>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
    </top>
    <center>
-      <VBox alignment="TOP_CENTER" prefHeight="178.0" prefWidth="473.0" spacing="15.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="centerContainerId" alignment="TOP_CENTER" prefHeight="${screen.visualBounds.height}" prefWidth="${screen.visualBounds.width}" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="544.0" prefWidth="453.0">
+            <HBox fx:id="selectionMenuId" alignment="CENTER" prefHeight="${centerContainerId.height*0.9}" prefWidth="${screen.visualBounds.width}" BorderPane.alignment="CENTER">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleOnActionButtonLogin" prefHeight="20.0" prefWidth="140.0" style="-fx-font-size: 18;" text="Log In" textAlignment="CENTER">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleOnActionButtonLogin" prefHeight="${selectionMenuId.height * 0.1}" prefWidth="140.0" style="-fx-font-size: 18;" stylesheets="@../resources/styles.css" text="Log In" textAlignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -29,7 +85,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleOnActionButtonSignUp" prefHeight="20.0" prefWidth="140.0" style="-fx-font-size: 18;" text="Sign Up">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleOnActionButtonSignUp" prefHeight="${selectionMenuId.height * 0.1}" prefWidth="140.0" style="-fx-font-size: 18;" stylesheets="@../resources/styles.css" text="Sign Up">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -37,23 +93,28 @@
                </children>
             </HBox>
          </children>
-         <padding>
-            <Insets left="10.0" right="10.0" top="10.0" />
-         </padding>
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="473.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_RIGHT" maxHeight="25.0" prefHeight="25.0" prefWidth="${screen.visualBounds.width}" style="-fx-background-color: #dee1e1;" BorderPane.alignment="CENTER_RIGHT">
          <children>
-            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleOnActionButtonExit" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: red;" text="Exit">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
+            <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="${screen.visualBounds.width}">
+               <children>
+                  <Button minWidth="60.0" mnemonicParsing="false" onAction="#onContactClick" prefHeight="25.0" prefWidth="50.0" style="-fx-cursor: hand; -fx-background-color: transparent;" text="Contact" textAlignment="CENTER" />
+                  <Button minWidth="45.0" mnemonicParsing="false" onAction="#onHelpClick" prefHeight="25.0" prefWidth="47.0" style="-fx-cursor: hand; -fx-background-color: transparent;" text="Help" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
                <HBox.margin>
-                  <Insets bottom="5.0" right="5.0" />
+                  <Insets />
                </HBox.margin>
-            </Button>
+            </HBox>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </HBox>
    </bottom>
 </BorderPane>
