@@ -65,18 +65,18 @@
    <center>
       <VBox fx:id="centerContainerId" alignment="CENTER" prefHeight="${screen.visualBounds.height}" prefWidth="${screen.visualBounds.width}" BorderPane.alignment="CENTER">
          <children>
-            <VBox fx:id="formContainerId" alignment="CENTER_LEFT" prefHeight="${centerContainerId.height*0.8}" prefWidth="${centerContainerId.width}" style="-fx-font-weight: bold;" BorderPane.alignment="CENTER">
+            <VBox fx:id="formContainerId" alignment="CENTER" prefHeight="${centerContainerId.height*0.8}" prefWidth="${centerContainerId.width}" style="-fx-font-weight: bold;" BorderPane.alignment="CENTER">
                <children>
-                  <Label minWidth="100.0" prefHeight="27.0" prefWidth="102.0" style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Username:" translateX="75.0" />
+                  <Label minWidth="100.0" prefHeight="27.0" prefWidth="102.0" style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Username:" translateX="-120.0" />
                   <HBox alignment="CENTER" prefHeight="45.0" prefWidth="${formContainerId.width*0.6}" spacing="15.0">
                      <children>
-                        <TextField fx:id="username_field" alignment="TOP_LEFT" prefHeight="29.0" prefWidth="336.0" />
+                        <TextField fx:id="username_field" alignment="TOP_LEFT" prefHeight="30.0" prefWidth="336.0" />
                      </children>
                   </HBox>
-                  <Label minWidth="100.0" prefHeight="8.0" prefWidth="100.0" style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Password:" translateX="75.0" />
+                  <Label minWidth="100.0" prefHeight="8.0" prefWidth="100.0" style="-fx-font-size: 18; -fx-text-fill: DEEPSKYBLUE;" text="Password:" translateX="-120.0" />
                   <HBox alignment="CENTER" prefHeight="56.0" prefWidth="${formContainerId.width*0.6}" spacing="15.0">
                      <children>
-                        <PasswordField fx:id="pass_field" prefHeight="31.0" prefWidth="335.0" />
+                        <PasswordField fx:id="pass_field" prefHeight="30.0" prefWidth="335.0" translateY="-2.0" />
                      </children>
                   </HBox>
                </children>
