@@ -40,6 +40,14 @@ public class Utils {
     public static final String PROFILE_ICON_PATH = NAVIGATION_RESOURCES_PATH + "/" + "profile-icon.png";
     public static final String CHART_ICON_PATH = NAVIGATION_RESOURCES_PATH + "/" + "location-icon.png";
     public static final String GET_BACK_ICON_PATH = NAVIGATION_RESOURCES_PATH + "/" + "previous-icon.png";
+    
+    public static final String ANGLE_ICON_PATH = NAVIGATION_RESOURCES_PATH + "/" + "angle.png";
+    public static final String ARC_ICON_PATH = NAVIGATION_RESOURCES_PATH + "/" + "arc.png";
+    public static final String CROSS_MARC_ICON_PATH = NAVIGATION_RESOURCES_PATH + "/" + "cross-mark.png";
+    public static final String DELETE_ICON_PATH = NAVIGATION_RESOURCES_PATH + "/" + "delete.png";
+    public static final String START_POINT_ICON_PATH = NAVIGATION_RESOURCES_PATH + "/" + "start-point.png";
+    public static final String TEXT_ICON_PATH = NAVIGATION_RESOURCES_PATH + "/" + "type.png";
+    public static final String LINE_ICON_PATH = NAVIGATION_RESOURCES_PATH + "/" + "diagonal-line.png";
 
     private static final String VIEWS_FOLDER_PATH = "views/";
     private static final String FXML_EXTENSION = ".fxml";

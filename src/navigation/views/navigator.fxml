@@ -51,38 +51,38 @@
          <children>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="900.0">
                <children>
-                  <Button mnemonicParsing="false" text="Line">
+                  <Button fx:id="lineBtnId" maxWidth="30.0" mnemonicParsing="false" onAction="#onLineBtnClick" text="Line">
                      <HBox.margin>
                         <Insets left="5.0" right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Arc">
+                  <Button fx:id="arcBtnId" maxWidth="30.0" mnemonicParsing="false" onAction="#onArcBtnClick" text="Arc">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Text">
+                  <Button fx:id="textBtnId" maxWidth="30.0" mnemonicParsing="false" onAction="#onTextBtnClick" text="Text">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="End Point">
+                  <Button fx:id="endPointBtnId" maxWidth="30.0" mnemonicParsing="false" onAction="#onEndPointBtnClick" prefHeight="25.0" prefWidth="31.0" text="End Point">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Measure angles">
+                  <Button fx:id="measureAngleBtnId" maxWidth="30.0" mnemonicParsing="false" onAction="#onMeasureAngleClick" prefHeight="25.0" prefWidth="44.0" text="Measure angles">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Separator prefHeight="3.0" prefWidth="421.0" visible="false" />
-                  <Button mnemonicParsing="false" text="Delete mark">
+                  <Separator prefHeight="5.0" prefWidth="${mainMenuId.width*0.8}" visible="false" />
+                  <Button fx:id="deleteMarkBtnId" minWidth="110.0" mnemonicParsing="false" onAction="#onDeleteMarkBtnClick" style="-fx-background-color: orange;" stylesheets="@../resources/styles.css" text="Delete mark">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Clean chart">
+                  <Button fx:id="onCleanChartBtnId" minWidth="110.0" mnemonicParsing="false" onAction="#onCleanChartClick" style="-fx-background-color: red;" stylesheets="@../resources/styles.css" text="Clean chart" textFill="#070707">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
@@ -91,34 +91,40 @@
             </HBox>
             <HBox>
                <children>
-                  <HBox alignment="CENTER">
+                  <HBox alignment="CENTER" maxHeight="150.0" minWidth="150.0">
                      <children>
-                        <Label minWidth="40.0" prefHeight="27.0" prefWidth="37.0" text="Stroke: ">
+                        <Label maxWidth="35.0" minWidth="40.0" prefHeight="27.0" prefWidth="37.0" text="Stroke: ">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
                         </Label>
-                        <ChoiceBox prefWidth="150.0" />
+                        <ChoiceBox fx:id="strokeChooserId" maxWidth="100.0" minWidth="50.0" prefWidth="150.0" />
                      </children>
                      <HBox.margin>
                         <Insets left="5.0" right="5.0" />
                      </HBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER">
+                  <HBox alignment="CENTER" maxWidth="110.0" minWidth="110.0">
                      <children>
-                        <Label minWidth="40.0" prefHeight="27.0" prefWidth="37.0" text="Color: " />
-                        <ColorPicker editable="true" promptText="Color" />
+                        <Label maxWidth="50.0" minWidth="30.0" prefHeight="27.0" prefWidth="37.0" text="Color: " />
+                        <ColorPicker fx:id="colorChooserId" editable="true" maxWidth="60.0" promptText="Color" />
                      </children>
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </HBox>
-                  <Separator prefHeight="5.0" prefWidth="246.0" visible="false" />
-                  <HBox alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="274.0" stylesheets="@../resources/styles.css">
+                  <Separator prefHeight="5.0" prefWidth="${mainMenuId.width*0.8}" visible="false" />
+                  <HBox alignment="CENTER_RIGHT" minWidth="250.0" prefHeight="32.0" prefWidth="274.0" stylesheets="@../resources/styles.css">
                      <children>
-                        <Label minWidth="30.0" prefHeight="27.0" prefWidth="68.0" text="Zoom" />
+                        <Label maxWidth="55.0" minWidth="55.0" prefHeight="27.0" prefWidth="50.0" text="Zoom:" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="10.0" />
+                           </font></Label>
                         <Button mnemonicParsing="false" onAction="#zoomIn" text="+" />
-                        <Slider fx:id="zoom_slider" />
+                        <Slider fx:id="zoom_slider">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin></Slider>
                         <Button mnemonicParsing="false" onAction="#zoomOut" text="-" />
                      </children>
                      <HBox.margin>
@@ -134,7 +140,7 @@
                      <content>
                         <Pane>
                            <children>
-                              <ImageView fx:id="imgView" pickOnBounds="true">
+                              <ImageView fx:id="imgView" fitWidth="1640.0" layoutX="-3.0" layoutY="-1.0" pickOnBounds="true">
                                  <image>
                                     <Image url="@../resources/upv.jpg" />
                                  </image>
@@ -156,7 +162,10 @@
             </SplitPane>
             <HBox alignment="CENTER_RIGHT" stylesheets="@../resources/styles.css">
                <children>
-                  <Label fx:id="posicion" minHeight="-Infinity" minWidth="-Infinity" text="SceneX:     ScenY:     " wrapText="true" HBox.hgrow="ALWAYS" />
+                  <Label fx:id="posicion" minHeight="-Infinity" minWidth="-Infinity" text="SceneX:     ScenY:     " wrapText="true" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="12.0" right="12.0" top="6.0" />
