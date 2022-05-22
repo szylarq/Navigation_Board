@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550" prefWidth="600" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.SingleProblemController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650" prefWidth="600" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.SingleProblemController">
   <top>
     <VBox fx:id="mainMenuId" prefWidth="${screen.visualBounds.width}" BorderPane.alignment="CENTER">
       <children>
@@ -90,17 +90,17 @@
       <children>
         <VBox fx:id="mainContainerId" alignment="CENTER" prefHeight="${centerContainerId.height*0.9}" prefWidth="${screen.visualBounds.width}">
           <children>
-            <HBox alignment="CENTER" maxHeight="${mainContainerId.height*0.6}" maxWidth="${mainContainerId.width*0.6}" prefHeight="${mainContainerId.height*0.4}" prefWidth="${mainContainerId.width}">
+            <HBox alignment="BOTTOM_CENTER" maxHeight="${mainContainerId.height*0.6}" maxWidth="${mainContainerId.width*0.8}" prefHeight="${mainContainerId.height*0.4}" prefWidth="${mainContainerId.width}">
               <children>
-                <Label fx:id="problemLabel" maxWidth="${mainContainerId.width}" prefHeight="${mainContainerId.height*0.35}" prefWidth="${mainContainerId.width}" text="Question" textAlignment="JUSTIFY" wrapText="true">
+                <Label fx:id="problemLabel" alignment="CENTER" maxWidth="${mainContainerId.width}" prefHeight="${mainContainerId.height*0.35}" prefWidth="${mainContainerId.width}" text="Question" textAlignment="JUSTIFY" wrapText="true">
                   <font>
                     <Font name="System Bold Italic" size="12.0" />
                   </font>
                 </Label>
               </children>
             </HBox>
-            <HBox fx:id="solutionContainerId" alignment="CENTER_RIGHT" maxHeight="${mainContainerId.height*0.6}" maxWidth="${mainContainerId.width*0.6}" prefHeight="${mainContainerId.height*0.6}" prefWidth="${mainContainerId.width}">
-              <GridPane alignment="CENTER_RIGHT" prefHeight="${solutionContainerId.height}" prefWidth="${solutionContainerId.width}">
+            <HBox fx:id="solutionContainerId" alignment="TOP_CENTER" maxHeight="${mainContainerId.height*0.6}" maxWidth="${mainContainerId.width*0.6}" prefHeight="${mainContainerId.height*0.6}" prefWidth="${mainContainerId.width}">
+              <GridPane alignment="TOP_CENTER" prefHeight="${solutionContainerId.height}" prefWidth="${solutionContainerId.width}">
                 <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="594.2000305175782" minWidth="10.0" prefWidth="377.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="557.6000183105468" minWidth="5.399969482421852" prefWidth="123.0" />
