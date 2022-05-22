@@ -117,14 +117,10 @@ public class LoginController implements Initializable {
         primaryScene = primaryStage.getScene();
         primaryTitle = primaryStage.getTitle();
         username = new SimpleStringProperty();
-        username.setValue("dbliakharchuk");
         username.bind(username_field.textProperty());
-        username_field.textProperty().setValue("dbliakharchuk");
 
         password = new SimpleStringProperty();
-        password.setValue("1234Ui!@");
         password.bind(pass_field.textProperty());
-        pass_field.textProperty().setValue("1234Ui!@");
     }
     
     void initFronendSetings() throws Exception {

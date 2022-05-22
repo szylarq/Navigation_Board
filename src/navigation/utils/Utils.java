@@ -176,14 +176,14 @@ public class Utils {
     public static void showContact() {
         Alert message = new Alert(Alert.AlertType.INFORMATION);
         message.setTitle("Contact");
-        message.setHeaderText("Piotr Szylar: pszylar@etsinf.upv.es \nDmytro Bliakharchuk: dbliakh@etsinf.upv.es\nAndreas");
+        message.setHeaderText("Piotr Szylar: pszylar@etsinf.upv.es \nDmytro Bliakharchuk: dbliakh@etsinf.upv.es\nAndreas Demosthenous: ademost@etsinf.upv.es");
         message.showAndWait();
     }
     
     public static void showHelp() {
         Alert message = new Alert(Alert.AlertType.INFORMATION);
         message.setTitle("Help");
-        message.setHeaderText("In case of any problems contact with us by mail:\nPiotr Szylar: pszylar@etsinf.upv.es \nDmytro Bliakharchuk: dbliakh@etsinf.upv.es\nAndreas");
+        message.setHeaderText("In case of any problems contact with us by mail:\nPiotr Szylar: pszylar@etsinf.upv.es \nDmytro Bliakharchuk: dbliakh@etsinf.upv.es\nAndreas Demosthenous: ademost@etsinf.upv.es");
         message.showAndWait();
     }
     

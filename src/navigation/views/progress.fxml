@@ -109,11 +109,11 @@
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox fx:id="solutionContainerId" alignment="CENTER" prefHeight="${mainContainerId.height*0.8}" prefWidth="${mainContainerId.width}">
-                     <GridPane alignment="CENTER" prefHeight="${solutionContainerId.height}" prefWidth="${solutionContainerId.width}">
+                  <HBox fx:id="solutionContainerId" alignment="CENTER" layoutX="-100.0" maxHeight="${mainContainerId.height*0.4}" maxWidth="${mainContainerId.width*0.4}" prefHeight="${mainContainerId.height*0.4}" prefWidth="${mainContainerId.width}">
+                     <GridPane alignment="CENTER" maxHeight="100.0" maxWidth="${mainContainerId.width*0.4}" prefHeight="90.0" prefWidth="223.0">
                         <columnConstraints>
-                           <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                           <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="149.0" />
+                           <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="74.0" />
                         </columnConstraints>
                         <rowConstraints>
                            <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -121,12 +121,30 @@
                            <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         </rowConstraints>
                         <children>
-                           <Label alignment="CENTER" contentDisplay="CENTER" text="Overall correctnes:s" />
-                           <Label alignment="CENTER" contentDisplay="CENTER" text="Hits:" GridPane.rowIndex="1" />
-                           <Label alignment="CENTER" contentDisplay="CENTER" text="Faults:" GridPane.rowIndex="2" />
-                           <Label fx:id="correctnessLabel" alignment="CENTER" contentDisplay="CENTER" text="Label" GridPane.columnIndex="1" />
-                           <Label fx:id="hitsLabel" alignment="CENTER" contentDisplay="CENTER" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                           <Label fx:id="faultsLabel" alignment="CENTER" contentDisplay="CENTER" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="50.0" text="Overall correctness:" wrapText="true">
+                              <font>
+                                 <Font name="System Bold Italic" size="14.0" />
+                              </font></Label>
+                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="50.0" text="Hits:" wrapText="true" GridPane.rowIndex="1">
+                              <font>
+                                 <Font name="System Bold Italic" size="14.0" />
+                              </font></Label>
+                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="50.0" text="Faults:" wrapText="true" GridPane.rowIndex="2">
+                              <font>
+                                 <Font name="System Bold Italic" size="14.0" />
+                              </font></Label>
+                           <Label fx:id="correctnessLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="50.0" text="Label" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="System Bold" size="14.0" />
+                              </font></Label>
+                           <Label fx:id="hitsLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="50.0" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <font>
+                                 <Font name="System Bold" size="14.0" />
+                              </font></Label>
+                           <Label fx:id="faultsLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="50.0" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <font>
+                                 <Font name="System Bold" size="14.0" />
+                              </font></Label>
                         </children>
                      </GridPane>
                   </HBox>

@@ -99,8 +99,8 @@
                 </Label>
               </children>
             </HBox>
-            <HBox fx:id="solutionContainerId" alignment="TOP_CENTER" maxHeight="${mainContainerId.height*0.6}" maxWidth="${mainContainerId.width*0.6}" prefHeight="${mainContainerId.height*0.6}" prefWidth="${mainContainerId.width}">
-              <GridPane alignment="TOP_CENTER" prefHeight="${solutionContainerId.height}" prefWidth="${solutionContainerId.width}">
+            <HBox fx:id="solutionContainerId" alignment="TOP_RIGHT" maxHeight="${mainContainerId.height*0.6}" maxWidth="${mainContainerId.width*0.6}" prefHeight="${mainContainerId.height*0.6}" prefWidth="${mainContainerId.width}">
+              <GridPane alignment="CENTER_RIGHT" prefHeight="${solutionContainerId.height}" prefWidth="${solutionContainerId.width}">
                 <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="594.2000305175782" minWidth="10.0" prefWidth="377.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="557.6000183105468" minWidth="5.399969482421852" prefWidth="123.0" />
