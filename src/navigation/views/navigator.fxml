@@ -12,59 +12,111 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="616.0" prefWidth="895.0" stylesheets="@../resources/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.NavigatorController">
-   <children>
-      <HBox alignment="CENTER_RIGHT" fillHeight="false" spacing="5.0" VBox.vgrow="NEVER">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="900" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.controllers.NavigatorController">
+   <top>
+      <VBox fx:id="mainMenuId" prefWidth="${screen.visualBounds.width}" BorderPane.alignment="CENTER">
          <children>
-            <Region HBox.hgrow="ALWAYS" />
-            <Label text="Zoom" />
-            <Button mnemonicParsing="false" onAction="#zoomOut" text="-" />
-            <Slider fx:id="zoom_slider" HBox.hgrow="SOMETIMES" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#zoomIn" text="+" />
+            <HBox alignment="CENTER" maxHeight="30.0" opacity="0.71" prefHeight="30.0" prefWidth="${screen.visualBounds.width}" styleClass="main-label" stylesheets="@../resources/styles.css">
+               <children>
+                  <Label alignment="CENTER" maxHeight="52.0" prefHeight="47.0" styleClass="main-label" stylesheets="@../resources/styles.css" text="Navigator" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
          </children>
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin>
-      </HBox>
-      <SplitPane dividerPositions="0.4431438127090301" VBox.vgrow="ALWAYS">
-         <items>
-            <ListView fx:id="map_listview" onMouseClicked="#listClicked" prefHeight="399.0" prefWidth="87.0" />
-            <ScrollPane fx:id="map_scrollpane" hbarPolicy="ALWAYS" onMouseMoved="#muestraPosicion" pannable="true" prefHeight="398.0" prefWidth="358.0" vbarPolicy="ALWAYS">
-               <content>
-                  <Pane>
-                     <children>
-                        <ImageView fx:id="imgView" pickOnBounds="true">
-                           <image>
-                              <Image url="@../resources/upv.jpg" />
-                           </image>
-                        </ImageView>
-                        <MenuButton fx:id="map_pin" mnemonicParsing="false" prefHeight="60.0" prefWidth="48.0" visible="false">
-                           <items>
-                              <MenuItem fx:id="pin_info" mnemonicParsing="false" text="Action 1" />
-                           </items>
-                           <styleClass>
-                              <String fx:value="menu-button" />
-                              <String fx:value="map-pin" />
-                           </styleClass>
-                        </MenuButton>
-                     </children>
-                  </Pane>
-               </content>
-            </ScrollPane>
-         </items>
-      </SplitPane>
-      <HBox alignment="CENTER_RIGHT">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </top>
+   <center>
+      <VBox fx:id="centerContainerId" prefHeight="${screen.visualBounds.height}" prefWidth="${screen.visualBounds.width}" stylesheets="@../resources/styles.css" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="posicion" minHeight="-Infinity" minWidth="-Infinity" text="SceneX:     ScenY:     " wrapText="true" HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER_RIGHT" fillHeight="false" spacing="5.0" VBox.vgrow="NEVER">
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label text="Zoom" />
+                  <Button mnemonicParsing="false" onAction="#zoomOut" text="-" />
+                  <Slider fx:id="zoom_slider" HBox.hgrow="SOMETIMES" />
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#zoomIn" text="+" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <SplitPane dividerPositions="0.4431438127090301" stylesheets="@../resources/styles.css" VBox.vgrow="ALWAYS">
+               <items>
+                  <ListView fx:id="map_listview" onMouseClicked="#listClicked" prefHeight="399.0" prefWidth="87.0" />
+                  <ScrollPane fx:id="map_scrollpane" hbarPolicy="ALWAYS" onMouseMoved="#muestraPosicion" pannable="true" prefHeight="398.0" prefWidth="358.0" vbarPolicy="ALWAYS">
+                     <content>
+                        <Pane>
+                           <children>
+                              <ImageView fx:id="imgView" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../resources/upv.jpg" />
+                                 </image>
+                              </ImageView>
+                              <MenuButton fx:id="map_pin" mnemonicParsing="false" prefHeight="60.0" prefWidth="48.0" visible="false">
+                                 <items>
+                                    <MenuItem fx:id="pin_info" mnemonicParsing="false" text="Action 1" />
+                                 </items>
+                                 <styleClass>
+                                    <String fx:value="menu-button" />
+                                    <String fx:value="map-pin" />
+                                 </styleClass>
+                              </MenuButton>
+                           </children>
+                        </Pane>
+                     </content>
+                  </ScrollPane>
+               </items>
+            </SplitPane>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Label fx:id="posicion" minHeight="-Infinity" minWidth="-Infinity" text="SceneX:     ScenY:     " wrapText="true" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="12.0" right="12.0" top="6.0" />
+               </VBox.margin>
+            </HBox>
          </children>
-         <VBox.margin>
-            <Insets bottom="12.0" right="12.0" top="6.0" />
-         </VBox.margin>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" maxHeight="25.0" prefHeight="25.0" prefWidth="${screen.visualBounds.width}" style="-fx-background-color: #dee1e1;" BorderPane.alignment="CENTER_RIGHT">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="${screen.visualBounds.width}">
+               <children>
+                  <Button minWidth="60.0" mnemonicParsing="false" onAction="#onContactClick" prefHeight="25.0" prefWidth="50.0" style="-fx-cursor: hand; -fx-background-color: transparent;" text="Contact" textAlignment="CENTER" />
+                  <Button minWidth="45.0" mnemonicParsing="false" onAction="#onHelpClick" prefHeight="25.0" prefWidth="47.0" style="-fx-cursor: hand; -fx-background-color: transparent;" text="Help" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </HBox>
-   </children>
-</VBox>
+   </bottom>
+</BorderPane>

@@ -1,5 +1,6 @@
 package navigation.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -24,6 +25,7 @@ import javafx.util.Duration;
 import model.User;
 import navigation.AppRoot;
 import navigation.model.Poi;
+import navigation.utils.Utils;
 
 /**
  *
@@ -90,6 +92,42 @@ public class NavigatorController implements Initializable {
         // recuperamos el valor del scroll antes del escalado
         map_scrollpane.setHvalue(scrollH);
         map_scrollpane.setVvalue(scrollV);
+    }
+    
+    @FXML
+    private void onCancelClicked(ActionEvent event) {
+        primaryStage.setScene(primaryScene);
+        primaryStage.setTitle(primaryTitle);
+    }
+    
+    @FXML
+    private void onExitClicked(ActionEvent event) {
+        Utils.closeTheApp();
+    }
+
+    @FXML
+    private void onProfileClicked() throws IOException{
+        Utils.showUserProfile();
+    }
+
+    @FXML
+    private void onAboutClicked(ActionEvent event) {
+        Utils.shoeAbout();
+    }
+
+    @FXML
+    private void onLogOutClicked(ActionEvent event) throws IOException{
+        Utils.logOut();
+    }
+    
+    @FXML
+    private void onContactClick(ActionEvent event) {
+        Utils.showContact();
+    }
+
+    @FXML
+    private void onHelpClick(ActionEvent event) {
+        Utils.showHelp();
     }
 
     @FXML

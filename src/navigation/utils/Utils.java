@@ -178,6 +178,13 @@ public class Utils {
         message.setHeaderText("In case of any problems contact with us by mail:\nPiotr Szylar: pszylar@etsinf.upv.es \nDmytro Bliakharchuk: dbliakh@etsinf.upv.es\nAndreas");
         message.showAndWait();
     }
+    
+    public static void showAlert(String title, String context) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(context);
+        alert.showAndWait();
+    }
 
     public static void showUserProfile() throws IOException {
         Parent root

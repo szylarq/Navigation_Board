@@ -108,6 +108,11 @@ public class ProblemsController implements Initializable {
         Parent root = loader.load();
 
         SingleProblemController controller = loader.<SingleProblemController>getController();
+        if (problemsListView.getSelectionModel().getSelectedItem() == null) {
+            Utils.showAlert("Unselected task!", "Please, Select a task!");
+            return;
+        }
+
         controller.init(problemsListView.getSelectionModel().getSelectedItem());
 
         Scene scene = new Scene(root);
