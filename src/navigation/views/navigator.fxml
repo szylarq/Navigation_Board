@@ -3,11 +3,14 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
@@ -15,7 +18,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -45,19 +47,85 @@
       </VBox>
    </top>
    <center>
-      <VBox fx:id="centerContainerId" prefHeight="${screen.visualBounds.height}" prefWidth="${screen.visualBounds.width}" stylesheets="@../resources/styles.css" BorderPane.alignment="CENTER">
+      <VBox fx:id="centerContainerId" prefHeight="${screen.visualBounds.height}" prefWidth="${screen.visualBounds.width}" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_RIGHT" fillHeight="false" spacing="5.0" VBox.vgrow="NEVER">
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="900.0">
                <children>
-                  <Region HBox.hgrow="ALWAYS" />
-                  <Label text="Zoom" />
-                  <Button mnemonicParsing="false" onAction="#zoomOut" text="-" />
-                  <Slider fx:id="zoom_slider" HBox.hgrow="SOMETIMES" />
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#zoomIn" text="+" />
+                  <Button mnemonicParsing="false" text="Line">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Arc">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Text">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" text="End Point">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Measure angles">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Separator prefHeight="3.0" prefWidth="421.0" visible="false" />
+                  <Button mnemonicParsing="false" text="Delete mark">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Clean chart">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
+            </HBox>
+            <HBox>
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label minWidth="40.0" prefHeight="27.0" prefWidth="37.0" text="Stroke: ">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ChoiceBox prefWidth="150.0" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label minWidth="40.0" prefHeight="27.0" prefWidth="37.0" text="Color: " />
+                        <ColorPicker editable="true" promptText="Color" />
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </HBox>
+                  <Separator prefHeight="5.0" prefWidth="246.0" visible="false" />
+                  <HBox alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="274.0" stylesheets="@../resources/styles.css">
+                     <children>
+                        <Label minWidth="30.0" prefHeight="27.0" prefWidth="68.0" text="Zoom" />
+                        <Button mnemonicParsing="false" onAction="#zoomIn" text="+" />
+                        <Slider fx:id="zoom_slider" />
+                        <Button mnemonicParsing="false" onAction="#zoomOut" text="-" />
+                     </children>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </HBox>
+               </children>
             </HBox>
             <SplitPane dividerPositions="0.4431438127090301" stylesheets="@../resources/styles.css" VBox.vgrow="ALWAYS">
                <items>
@@ -86,7 +154,7 @@
                   </ScrollPane>
                </items>
             </SplitPane>
-            <HBox alignment="CENTER_RIGHT">
+            <HBox alignment="CENTER_RIGHT" stylesheets="@../resources/styles.css">
                <children>
                   <Label fx:id="posicion" minHeight="-Infinity" minWidth="-Infinity" text="SceneX:     ScenY:     " wrapText="true" HBox.hgrow="ALWAYS" />
                </children>
