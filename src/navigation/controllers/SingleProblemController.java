@@ -30,6 +30,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -46,11 +47,17 @@ import navigation.utils.Utils;
  */
 public class SingleProblemController implements Initializable {
 
+    @FXML
     private Label problemLabel;
+    @FXML
     private RadioButton ans1RadioButton;
+    @FXML
     private RadioButton ans2RadioButton;
+    @FXML
     private RadioButton ans3RadioButton;
+    @FXML
     private RadioButton ans4RadioButton;
+    @FXML
     private Button submitButton;
     @FXML
     private Button cancelFinishButton;
@@ -68,23 +75,30 @@ public class SingleProblemController implements Initializable {
     private User user;
     @FXML
     private VBox mainMenuId;
+    @FXML
     private Button getBackBtnId;
+    @FXML
     private Button chartBtnId;
+    @FXML
     private MenuButton profileMenuBtnId;
     @FXML
-    private Slider zoom_slider;
+    private Separator menuSeparotorId;
     @FXML
-    private ListView<?> map_listview;
+    private VBox centerContainerId;
     @FXML
-    private ScrollPane map_scrollpane;
+    private VBox mainContainerId;
     @FXML
-    private ImageView imgView;
+    private HBox solutionContainerId;
     @FXML
-    private MenuButton map_pin;
+    private Label ans1Label;
     @FXML
-    private MenuItem pin_info;
+    private Label ans2Label;
     @FXML
-    private Label posicion;
+    private Label ans3Label;
+    @FXML
+    private Label ans4Label;
+    @FXML
+    private HBox selectionMenuId;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -147,6 +161,7 @@ public class SingleProblemController implements Initializable {
         }
     }
 
+    @FXML
     private void onShowNavigationMapClicked(ActionEvent event) throws IOException{
         Parent root = 
                 FXMLLoader.load(Utils.getFXMLName(NavigatorController.class)); 
@@ -160,6 +175,7 @@ public class SingleProblemController implements Initializable {
         profileStage.showAndWait();
     }
 
+    @FXML
     private void onSubmitClicked(ActionEvent event) { 
         RadioButton selectedRadioButton = 
                 (RadioButton) radioButtonsGroup.getSelectedToggle();
@@ -210,23 +226,28 @@ public class SingleProblemController implements Initializable {
         profileMenuBtnId.setGraphic(imageViewProfile);
     }
 
+    @FXML
     private void onCancelClicked(ActionEvent event) {
         primaryStage.setScene(primaryScene);
         primaryStage.setTitle(primaryTitle);
     }
     
+    @FXML
     private void onExitClicked(ActionEvent event) {
         Utils.closeTheApp();
     }
 
+    @FXML
     private void onProfileClicked() throws IOException{
         Utils.showUserProfile();
     }
 
+    @FXML
     private void onAboutClicked(ActionEvent event) {
         Utils.shoeAbout();
     }
 
+    @FXML
     private void onLogOutClicked(ActionEvent event) throws IOException{
         Utils.logOut();
     }
@@ -241,7 +262,7 @@ public class SingleProblemController implements Initializable {
         Utils.showHelp();
     }
 
-
+    @FXML
     private void showProgress(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Utils.getFXMLName(ProgressController.class));
 
@@ -251,19 +272,4 @@ public class SingleProblemController implements Initializable {
         stage.setScene(scene);
     }
 
-    @FXML
-    private void zoomOut(ActionEvent event) {
-    }
-
-    @FXML
-    private void zoomIn(ActionEvent event) {
-    }
-
-    @FXML
-    private void listClicked(MouseEvent event) {
-    }
-
-    @FXML
-    private void muestraPosicion(MouseEvent event) {
-    }
 }

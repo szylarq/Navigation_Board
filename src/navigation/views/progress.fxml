@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -137,8 +138,14 @@
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
-                  <Button fx:id="openSelectedButton" mnemonicParsing="false" onAction="#handleOnActionButtonCancel" prefHeight="${selectionMenuId.height * 0.6}" prefWidth="140.0" stylesheets="@../resources/styles.css" text="Cancel" />
+                  <Button fx:id="openSelectedButton" mnemonicParsing="false" onAction="#handleOnActionButtonCancel" prefHeight="${selectionMenuId.height * 0.6}" prefWidth="140.0" stylesheets="@../resources/styles.css" text="Cancel">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />

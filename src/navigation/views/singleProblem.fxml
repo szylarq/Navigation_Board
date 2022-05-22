@@ -90,19 +90,20 @@
       <children>
         <VBox fx:id="mainContainerId" alignment="CENTER" prefHeight="${centerContainerId.height*0.9}" prefWidth="${screen.visualBounds.width}">
           <children>
-            <HBox alignment="CENTER" maxWidth="${mainContainerId.width}" prefHeight="${mainContainerId.height*0.4}" prefWidth="${mainContainerId.width}">
+            <HBox alignment="CENTER" maxHeight="${mainContainerId.height*0.6}" maxWidth="${mainContainerId.width*0.6}" prefHeight="${mainContainerId.height*0.4}" prefWidth="${mainContainerId.width}">
               <children>
                 <Label fx:id="problemLabel" maxWidth="${mainContainerId.width}" prefHeight="${mainContainerId.height*0.35}" prefWidth="${mainContainerId.width}" text="Question" textAlignment="JUSTIFY" wrapText="true">
-                           <font>
-                              <Font name="System Bold Italic" size="12.0" />
-                           </font></Label>
+                  <font>
+                    <Font name="System Bold Italic" size="12.0" />
+                  </font>
+                </Label>
               </children>
             </HBox>
-            <HBox fx:id="solutionContainerId" alignment="CENTER" prefHeight="${mainContainerId.height*0.6}" prefWidth="${mainContainerId.width}">
-              <GridPane alignment="CENTER" prefHeight="${solutionContainerId.height}" prefWidth="${solutionContainerId.width}">
+            <HBox fx:id="solutionContainerId" alignment="CENTER_RIGHT" maxHeight="${mainContainerId.height*0.6}" maxWidth="${mainContainerId.width*0.6}" prefHeight="${mainContainerId.height*0.6}" prefWidth="${mainContainerId.width}">
+              <GridPane alignment="CENTER_RIGHT" prefHeight="${solutionContainerId.height}" prefWidth="${solutionContainerId.width}">
                 <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="594.2000305175782" minWidth="10.0" prefWidth="433.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="557.6000183105468" minWidth="5.399969482421852" prefWidth="67.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="594.2000305175782" minWidth="10.0" prefWidth="377.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="557.6000183105468" minWidth="5.399969482421852" prefWidth="123.0" />
                 </columnConstraints>
                 <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -111,11 +112,11 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 </rowConstraints>
                 <children>
-                  <Label fx:id="ans1Label" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="3.0" maxWidth="50.0" prefHeight="18.0" prefWidth="46.0" text="Answer1" wrapText="true" GridPane.columnIndex="1" />
-                  <Label fx:id="ans2Label" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="3.0" maxWidth="50.0" text="Answer2" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="ans3Label" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="3.0" maxWidth="50.0" text="Answer3" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="ans4Label" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="3.0" maxWidth="50.0" text="Answer4" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <RadioButton fx:id="ans1RadioButton" contentDisplay="CENTER" graphicTextGap="3.0" mnemonicParsing="false" text="A. " />
+                  <Label fx:id="ans1Label" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="3.0" maxWidth="60.0" prefHeight="17.0" prefWidth="66.0" text="Answer1" wrapText="true" GridPane.columnIndex="1" />
+                  <Label fx:id="ans2Label" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="3.0" maxWidth="60.0" text="Answer2" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="ans3Label" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="3.0" maxWidth="60.0" text="Answer3" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="ans4Label" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="3.0" maxWidth="60.0" text="Answer4" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <RadioButton fx:id="ans1RadioButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="3.0" mnemonicParsing="false" text="A. " />
                   <RadioButton fx:id="ans2RadioButton" contentDisplay="CENTER" graphicTextGap="3.0" mnemonicParsing="false" text="B. " GridPane.rowIndex="1" />
                   <RadioButton fx:id="ans3RadioButton" alignment="CENTER_LEFT" contentDisplay="CENTER" graphicTextGap="3.0" mnemonicParsing="false" text="C. " GridPane.rowIndex="2" />
                   <RadioButton fx:id="ans4RadioButton" contentDisplay="CENTER" graphicTextGap="3.0" mnemonicParsing="false" text="D. " GridPane.rowIndex="3" />
@@ -123,9 +124,9 @@
               </GridPane>
             </HBox>
           </children>
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
+          <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+          </VBox.margin>
         </VBox>
         <HBox fx:id="selectionMenuId" alignment="CENTER" prefHeight="${centerContainerId.height*0.1}" prefWidth="${screen.visualBounds.width}">
           <children>
@@ -141,6 +142,9 @@
           </VBox.margin>
         </HBox>
       </children>
+      <BorderPane.margin>
+        <Insets />
+      </BorderPane.margin>
     </VBox>
   </center>
   <bottom>
